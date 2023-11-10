@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import static christmas.util.StringConverter.delimiterStringToList;
-import static christmas.validator.OrderMenusValidator.validateInputOrderMenus;
+import static christmas.validator.OrderMenusValidator.validateOrderMenus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +11,9 @@ public class OrderMenus {
     private final List<OrderMenu> menus;
 
     public OrderMenus(final String input) {
-        validateInputOrderMenus(input);
-
         List<String> orderMenus = delimiterStringToList(DELIMITER, input);
         List<OrderMenu> menus = converterStringToMenus(orderMenus);
+        validateOrderMenus(menus);
 
         this.menus = menus;
     }
@@ -26,6 +25,7 @@ public class OrderMenus {
             OrderMenu menu = OrderMenu.from(orderMenu);
             menus.add(menu);
         });
+
         return menus;
     }
 }
