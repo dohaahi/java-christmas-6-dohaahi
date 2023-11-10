@@ -13,7 +13,7 @@ class DateValidatorTest {
     class ValidateInputDate {
         @DisplayName("빈 값이 입력되면 예외 발생")
         @Test
-        void Value_is_empty() {
+        void Is_Value_Empty() {
             // given
             String input = "";
 
@@ -26,7 +26,7 @@ class DateValidatorTest {
 
         @DisplayName("숫자가 입력되면 검증 통과")
         @Test
-        void Value_is_number() {
+        void Is_Value_Number() {
             // given
             String input1 = "9";
             String input2 = "100";
@@ -39,7 +39,7 @@ class DateValidatorTest {
 
         @DisplayName("숫자가 아닌 다른 값이 입력되면 예외 발생")
         @Test
-        void Value_is_not_number() {
+        void Is_Value_Not_Number() {
             // given
             String input1 = "가나";
             String input2 = "abc";
