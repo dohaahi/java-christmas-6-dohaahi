@@ -3,12 +3,12 @@ package christmas.validator;
 import static christmas.validator.OrderMenusValidator.validateInputOrderMenus;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import christmas.domain.OrderMenus;
+import christmas.domain.Menus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class OrderMenusValidatorTest {
+public class MenusValidatorTest {
     @Nested
     @DisplayName("validateInputOrderMenu 메소드 test")
     class ValidateInputOrderMenuTest {
@@ -24,7 +24,7 @@ public class OrderMenusValidatorTest {
                     .hasMessage(ErrorMessage.ENTER_VALUE_MASSAGE.getMessage());
         }
 
-        @DisplayName(OrderMenus.DELIMITER + "를 사용하여 메뉴형식을 올바르게 입력하면 검증 통과")
+        @DisplayName(Menus.DELIMITER + "를 사용하여 메뉴형식을 올바르게 입력하면 검증 통과")
         @Test
         void Input_Valid_Menu_Format() {
             // given
@@ -37,7 +37,7 @@ public class OrderMenusValidatorTest {
             validateInputOrderMenus(input2);
         }
 
-        @DisplayName(OrderMenus.DELIMITER + "외에 다른 구분자를 사용하여 메뉴를 입력하면 예외 발생")
+        @DisplayName(Menus.DELIMITER + "외에 다른 구분자를 사용하여 메뉴를 입력하면 예외 발생")
         @Test
         void Invalid_Input_Menu_Delimiter() {
             // given
@@ -80,8 +80,8 @@ public class OrderMenusValidatorTest {
 
             // when
             // then
-            new OrderMenus(menus1);
-            new OrderMenus(menus2);
+            new Menus(menus1);
+            new Menus(menus2);
         }
 
         @DisplayName("메뉴 목록에 존재하지 않는 메뉴를 시키면 예외 발생")
@@ -93,10 +93,10 @@ public class OrderMenusValidatorTest {
 
             // when
             // then
-            assertThatThrownBy(() -> new OrderMenus(menus1))
+            assertThatThrownBy(() -> new Menus(menus1))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
-            assertThatThrownBy(() -> new OrderMenus(menus2))
+            assertThatThrownBy(() -> new Menus(menus2))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
         }
@@ -110,10 +110,10 @@ public class OrderMenusValidatorTest {
 
             // when
             // then
-            assertThatThrownBy(() -> new OrderMenus(menus1))
+            assertThatThrownBy(() -> new Menus(menus1))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
-            assertThatThrownBy(() -> new OrderMenus(menus2))
+            assertThatThrownBy(() -> new Menus(menus2))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
         }
