@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.domain.util.StringConverter.delimiterStringToList;
+import static christmas.util.StringConverter.delimiterStringToList;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import static christmas.domain.util.StringConverter.delimiterStringToList;
+import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
