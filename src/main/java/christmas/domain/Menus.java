@@ -38,12 +38,13 @@ public class Menus {
         return menus;
     }
 
-    public List<Menu> getMenus() {
-        return List.copyOf(menus);
-    }
-
     public int getTotalPrice() {
         int totalPrice = 0;
+
+        for (Entry<MenuItem, Integer> menu : menus.entrySet()) {
+            totalPrice += menu.getKey().getMenuPrice() * menu.getValue();
+        }
+
         return totalPrice;
     }
 }
