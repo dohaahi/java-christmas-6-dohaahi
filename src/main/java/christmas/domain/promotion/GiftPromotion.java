@@ -1,6 +1,6 @@
 package christmas.domain.promotion;
 
-import christmas.domain.MenuItem;
+import christmas.domain.menu.MenuItem;
 
 public class GiftPromotion {
     private static final int MIN_ORDER_AMOUNT = 120_000;

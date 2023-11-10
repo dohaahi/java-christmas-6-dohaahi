@@ -1,7 +1,7 @@
 package christmas.domain.promotion;
 
 import christmas.domain.DayOfWeek;
-import christmas.domain.MenuCategory;
+import christmas.domain.menu.MenuCategory;
 
 public class WeekdayPromotion {
     private final DayOfWeek startPeriod = DayOfWeek.FRIDAY;

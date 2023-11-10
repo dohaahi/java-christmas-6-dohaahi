@@ -1,6 +1,9 @@
-package christmas.domain;
+package christmas.domain.menu;
 
+import christmas.domain.Menu;
+import christmas.validator.ErrorMessage;
 import java.util.List;
+import java.util.Optional;
 
 public enum MenuItem {
     MUSHROOM_SOUP("양송이수프", 6_000, MenuCategory.APPETIZER),

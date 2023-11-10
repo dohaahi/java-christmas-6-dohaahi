@@ -4,7 +4,7 @@ import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
-import christmas.domain.MenuItem;
+import christmas.domain.menu.MenuItem;
 import christmas.domain.Menu;
 import christmas.domain.Menus;
 import java.util.ArrayList;

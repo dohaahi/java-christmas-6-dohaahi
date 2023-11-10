@@ -1,5 +1,7 @@
-package christmas.domain;
+package christmas.domain.menu;
 
+import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
 import java.util.List;
 
 public class Drink {
