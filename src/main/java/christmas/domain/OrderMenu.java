@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.util.StringConverter.delimiterStringToList;
+import static christmas.validator.OrderMenusValidator.validateOrderMenus;
 
 import java.util.List;
 
@@ -20,5 +21,9 @@ public class OrderMenu {
 
     public static OrderMenu from(final String orderMenu) {
         return new OrderMenu(orderMenu);
+    }
+
+    public String getMenuName() {
+        return menuName;
     }
 }
