@@ -8,10 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class OrderMenusValidatorTest {
+public class OrderMenusValidatorTest {
     @Nested
     @DisplayName("validateInputOrderMenu 메소드 test")
-    class ValidateInputOrderMenu {
+    class ValidateInputOrderMenuTest {
         @DisplayName("빈 값이 입력되면 예외 발생")
         @Test
         void Value_Is_Empty() {
@@ -64,6 +64,57 @@ class OrderMenusValidatorTest {
             assertThatThrownBy(() -> validateInputOrderMenus(input1)).isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
             assertThatThrownBy(() -> validateInputOrderMenus(input2)).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+        }
+    }
+
+    @Nested
+    @DisplayName("validateOrderMenus 메소드 test")
+    class ValidateOrderMenusTest {
+        @DisplayName("메뉴 목록에 존재하는 메뉴를 시키면 검증 통과")
+        @Test
+        void test() {
+            // given
+            String menus1 = "양송이수프-1";
+            String menus2 = "양송이수프-1, 크리스마스파스타-3, 제로콜라-1";
+
+            // when
+            // then
+            new OrderMenus(menus1);
+            new OrderMenus(menus2);
+        }
+
+        @DisplayName("메뉴 목록에 존재하지 않는 메뉴를 시키면 예외 발생")
+        @Test
+        void test2() {
+            // given
+            String menus1 = "브로콜리수프-1";
+            String menus2 = "브로콜리수프-1, 윈터파스타-3, 아메리카노-1";
+
+            // when
+            // then
+            assertThatThrownBy(() -> new OrderMenus(menus1))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+            assertThatThrownBy(() -> new OrderMenus(menus2))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+        }
+
+        @DisplayName("중복되는 메뉴를 시키면 예외 발생")
+        @Test
+        void test3() {
+            // given
+            String menus1 = "양송이수프-1, 양송이수프-4";
+            String menus2 = "양송이수프-1, 크리스마스파스타-3, 제로콜라-1, 크리스마스파스타-2";
+
+            // when
+            // then
+            assertThatThrownBy(() -> new OrderMenus(menus1))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+            assertThatThrownBy(() -> new OrderMenus(menus2))
+                    .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
         }
     }
