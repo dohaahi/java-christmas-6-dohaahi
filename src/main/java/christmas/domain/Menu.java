@@ -1,16 +1,15 @@
 package christmas.domain;
 
 import static christmas.util.StringConverter.delimiterStringToList;
-import static christmas.validator.OrderMenusValidator.validateOrderMenus;
 
 import java.util.List;
 
-public class OrderMenu {
+public class Menu {
     public static final String DELIMITER = "-";
     private final String menuName;
     private final int menuCount;
 
-    private OrderMenu(String orderMenu) {
+    private Menu(String orderMenu) {
         List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
         String menuName = menu.get(0);
         int menuCount = Integer.parseInt(menu.get(1));
@@ -19,11 +18,15 @@ public class OrderMenu {
         this.menuCount = menuCount;
     }
 
-    public static OrderMenu from(final String orderMenu) {
-        return new OrderMenu(orderMenu);
+    public static Menu from(final String orderMenu) {
+        return new Menu(orderMenu);
     }
 
     public String getMenuName() {
         return menuName;
+    }
+
+    public int getMenuCount() {
+        return menuCount;
     }
 }
