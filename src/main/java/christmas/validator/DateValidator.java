@@ -1,7 +1,7 @@
 package christmas.validator;
 
-import static christmas.domain.Date.MAX_DATE_IN_MONTH;
-import static christmas.domain.Date.MIN_DATE_IN_MONTH;
+import static christmas.domain.promotion.MonthPromotion.MAX_DATE_IN_MONTH;
+import static christmas.domain.promotion.MonthPromotion.MIN_DATE_IN_MONTH;
 import static christmas.validator.InputValidator.validateDateMatchedNumberRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
