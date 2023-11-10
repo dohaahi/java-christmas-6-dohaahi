@@ -49,6 +49,22 @@ public enum MenuItem {
                 .anyMatch(menuItem -> menu.getMenuName().equals(menuItem.menuName));
     }
 
+    public static MenuItem getMenuItem(final Menu menu) {
+        Optional<MenuItem> findMenu = menuItems.stream()
+                .filter(menuItem -> menuItem.menuName.equals(menu.getMenuName()))
+                .findFirst();
+
+        if (findMenu.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+        }
+
+        return findMenu.get();
+    }
+
+    public int getMenuPrice() {
+        return menuPrice;
+    }
+
     public MenuCategory getCategoryName() {
         return categoryName;
     }
