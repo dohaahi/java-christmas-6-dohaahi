@@ -4,12 +4,14 @@ import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
+import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItem;
 import christmas.domain.Menu;
 import christmas.domain.Menus;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class OrderMenusValidator {
     public static void validateInputOrderMenus(final String input) {
@@ -27,6 +29,7 @@ public class OrderMenusValidator {
     public static void validateOrderMenus(final List<Menu> menus) {
         validateMatchMenuItem(menus);
         validateDuplicateMenu(menus);
+        isDrinkOnly(menus);
         validateMenuCount(menus);
     }
 
@@ -46,6 +49,16 @@ public class OrderMenusValidator {
 
         if (count != menuNames.size()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+        }
+    }
+
+    private static void isDrinkOnly(final List<Menu> menus) {
+        Set<String> menuCategory = new HashSet<>();
+
+        menus.forEach(menu -> menuCategory.add(menu.getMenuName()));
+
+        if (menuCategory.size() == 1 && menuCategory.contains(MenuCategory.DRINK.getCategoryName())) {
+            throw new IllegalArgumentException(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
         }
     }
 
