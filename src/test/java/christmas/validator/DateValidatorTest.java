@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 class DateValidatorTest {
     @Nested
     @DisplayName("validateInputDate 메소드 test")
-    class ValidateInputDate {
+    class ValidateInputDateTest {
         @DisplayName("빈 값이 입력되면 예외 발생")
         @Test
         void Value_Is_Empty() {
@@ -60,43 +60,43 @@ class DateValidatorTest {
 
     @Nested
     @DisplayName("validateDate 메소드 test")
-    class ValidateDate {
+    class ValidateDateTest {
         @DisplayName("날짜가 " + MIN_DATE_IN_MONTH + "~" + MAX_DATE_IN_MONTH + " 범위에 포함 되면 검증 통과")
         @Test
         void Date_In_Month() {
             // given
-            String input1 = "1";
-            String input2 = "15";
-            String input3 = "31";
+            int date1 = 1;
+            int date2 = 15;
+            int date3 = 31;
 
             // when
             // then
-            validateDate(input1);
-            validateDate(input2);
-            validateDate(input3);
+            validateDate(date1);
+            validateDate(date2);
+            validateDate(date3);
         }
 
         @DisplayName("날짜가 " + MIN_DATE_IN_MONTH + "~" + MAX_DATE_IN_MONTH + " 범위에 포함 되지 않으면 예외 발생")
         @Test
         void Date_Not_In_Month() {
             // given
-            String input1 = "0";
-            String input2 = "32";
-            String input3 = "-1";
-            String input4 = "100";
+            int date1 = 0;
+            int date2 = 32;
+            int date3 = -1;
+            int date4 = 100;
 
             // when
             // then
-            assertThatThrownBy(() -> validateDate(input1))
+            assertThatThrownBy(() -> validateDate(date1))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
-            assertThatThrownBy(() -> validateDate(input2))
+            assertThatThrownBy(() -> validateDate(date2))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
-            assertThatThrownBy(() -> validateDate(input3))
+            assertThatThrownBy(() -> validateDate(date3))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
-            assertThatThrownBy(() -> validateDate(input4))
+            assertThatThrownBy(() -> validateDate(date4))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
         }
