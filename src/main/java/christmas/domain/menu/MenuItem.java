@@ -21,12 +21,12 @@ public enum MenuItem {
 
     private final String menuName;
     private final int menuPrice;
-    private final MenuCategory categoryName;
+    private final MenuCategory category;
 
     MenuItem(String menuName, int menuPrice, MenuCategory categoryName) {
         this.menuName = menuName;
         this.menuPrice = menuPrice;
-        this.categoryName = categoryName;
+        this.category = categoryName;
     }
 
     private static List<MenuItem> menuItems = List.of(
@@ -65,7 +65,7 @@ public enum MenuItem {
         return menuPrice;
     }
 
-    public MenuCategory getCategoryName() {
-        return categoryName;
+    public MenuCategory getCategory() {
+        return category;
     }
 }

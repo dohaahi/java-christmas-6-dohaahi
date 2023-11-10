@@ -1,7 +1,5 @@
 package christmas.domain.menu;
 
-import christmas.domain.menu.MenuCategory;
-import christmas.domain.menu.MenuItem;
 import java.util.List;
 
 public class Drink {
@@ -9,7 +7,7 @@ public class Drink {
 
     public Drink(List<MenuItem> menuItems) {
         List<MenuItem> menus = menuItems.stream()
-                .filter(menuItem -> menuItem.getCategoryName().equals(MenuCategory.DRINK))
+                .filter(menuItem -> menuItem.getCategory().equals(MenuCategory.DRINK))
                 .toList();
 
         this.menuItems = menus;
