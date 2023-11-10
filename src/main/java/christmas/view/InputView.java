@@ -13,7 +13,7 @@ public class InputView {
     public DateDto inputVisitDate() {
         System.out.println(GREETING_MESSAGE);
         System.out.println(EXPECTED_VISIT_DATE_MESSAGE);
-        String input = readLine().trim();
+        final String input = readLine().trim();
         validateInputDate(input);
 
         return new DateDto(Integer.parseInt(input));
