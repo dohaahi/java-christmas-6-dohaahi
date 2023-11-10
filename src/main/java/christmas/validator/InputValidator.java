@@ -1,6 +1,7 @@
 package christmas.validator;
 
 import christmas.domain.OrderMenu;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputValidator {
@@ -8,6 +9,12 @@ public class InputValidator {
     public static final String ORDER_MENU_REGEX = "^[가-힣]+" + OrderMenu.DELIMITER + "[\\d]*$";
 
     public static void validateValueEmpty(final String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.ENTER_VALUE_MASSAGE.getMessage());
+        }
+    }
+
+    public static void validateValueEmpty(final List<String> input) {
         if (input.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.ENTER_VALUE_MASSAGE.getMessage());
         }
