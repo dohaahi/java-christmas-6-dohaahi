@@ -1,12 +1,12 @@
 package christmas.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static christmas.domain.Date.CURRENT_MONTH;
+import static christmas.domain.promotion.MonthPromotion.CURRENT_MONTH;
 import static christmas.validator.DateValidator.validateInputDate;
 import static christmas.validator.OrderMenusValidator.validateInputOrderMenus;
 
 import christmas.domain.Date;
-import christmas.domain.OrderMenus;
+import christmas.domain.Menus;
 
 public class InputView {
     public static final String GREETING_MESSAGE = "안녕하세요! 우테코 식당 " + CURRENT_MONTH + "월 이벤트 플래너입니다.\n";
@@ -22,11 +22,11 @@ public class InputView {
         return new Date(Integer.parseInt(input));
     }
 
-    public OrderMenus inputOrderMenus() {
+    public Menus inputOrderMenus() {
         System.out.println(ORDER_MENU_MESSAGE);
         final String input = readLine().trim();
         validateInputOrderMenus(input);
 
-        return new OrderMenus(input);
+        return new Menus(input);
     }
 }

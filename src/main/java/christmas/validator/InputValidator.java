@@ -1,12 +1,12 @@
 package christmas.validator;
 
-import christmas.domain.OrderMenu;
+import christmas.domain.Menu;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class InputValidator {
     public static final String NUMBER_REGEX = "^[\\d]*$";
-    public static final String ORDER_MENU_REGEX = "^[가-힣]+" + OrderMenu.DELIMITER + "[\\d]*$";
+    public static final String ORDER_MENU_REGEX = "^[가-힣]+" + Menu.DELIMITER + "[\\d]*$";
 
     public static void validateValueEmpty(final String input) {
         if (input.isEmpty()) {
