@@ -6,26 +6,35 @@ import static christmas.validator.OrderMenusValidator.validateOrderMenus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderMenus {
+public class Menus {
     public static final String DELIMITER = ", ";
-    private final List<OrderMenu> menus;
+    private final List<Menu> menus;
 
-    public OrderMenus(final String input) {
+    public Menus(final String input) {
         List<String> orderMenus = delimiterStringToList(DELIMITER, input);
-        List<OrderMenu> menus = converterStringToMenus(orderMenus);
+        List<Menu> menus = converterStringToMenus(orderMenus);
         validateOrderMenus(menus);
 
         this.menus = menus;
     }
 
-    private List<OrderMenu> converterStringToMenus(List<String> orderMenus) {
-        List<OrderMenu> menus = new ArrayList<>();
+    private List<Menu> converterStringToMenus(List<String> orderMenus) {
+        List<Menu> menus = new ArrayList<>();
 
         orderMenus.forEach(orderMenu -> {
-            OrderMenu menu = OrderMenu.from(orderMenu);
+            Menu menu = Menu.from(orderMenu);
             menus.add(menu);
         });
 
         return menus;
+    }
+
+    public List<Menu> getMenus() {
+        return List.copyOf(menus);
+    }
+
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        return totalPrice;
     }
 }

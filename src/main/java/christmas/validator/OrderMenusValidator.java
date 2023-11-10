@@ -5,8 +5,8 @@ import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrd
 import static christmas.validator.InputValidator.validateValueEmpty;
 
 import christmas.domain.MenuItem;
-import christmas.domain.OrderMenu;
-import christmas.domain.OrderMenus;
+import christmas.domain.Menu;
+import christmas.domain.Menus;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class OrderMenusValidator {
     public static void validateInputOrderMenus(final String input) {
         validateValueEmpty(input);
-        List<String> orderMenus = delimiterStringToList(OrderMenus.DELIMITER, input);
+        List<String> orderMenus = delimiterStringToList(Menus.DELIMITER, input);
 
         if (orderMenus.size() == 1) {
             validateOrderMenuMatchedMenuOrderRegex(input);
@@ -24,13 +24,13 @@ public class OrderMenusValidator {
         orderMenus.forEach(InputValidator::validateOrderMenuMatchedMenuOrderRegex);
     }
 
-    public static void validateOrderMenus(final List<OrderMenu> menus) {
+    public static void validateOrderMenus(final List<Menu> menus) {
         validateMatchMenuItem(menus);
         validateDuplicateMenu(menus);
         validateMenuCount(menus);
     }
 
-    private static void validateMatchMenuItem(final List<OrderMenu> menus) {
+    private static void validateMatchMenuItem(final List<Menu> menus) {
         menus.forEach(menu -> {
             if (!MenuItem.isMatchMenu(menu)) {
                 throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
@@ -38,7 +38,7 @@ public class OrderMenusValidator {
         });
     }
 
-    private static void validateDuplicateMenu(final List<OrderMenu> menus) {
+    private static void validateDuplicateMenu(final List<Menu> menus) {
         List<String> menuNames = new ArrayList<>();
         menus.forEach(menu -> menuNames.add(menu.getMenuName()));
 
@@ -49,7 +49,7 @@ public class OrderMenusValidator {
         }
     }
 
-    private static void validateMenuCount(final List<OrderMenu> menus) {
+    private static void validateMenuCount(final List<Menu> menus) {
         if (menus.size() > 20) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_COUNT_MESSAGE.getMessage());
         }
