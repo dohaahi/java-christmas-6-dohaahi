@@ -11,14 +11,12 @@ public class DateValidator {
         validateDateMatchedNumberRegex(input);
     }
 
-    public static void validateDate(final String input) {
-        validateDateInMonth(input);
+    public static void validateDate(final int date) {
+        validateDateInMonth(date);
     }
 
-    private static void validateDateInMonth(final String input) {
-        final int day = Integer.parseInt(input);
-
-        if (MIN_DATE_IN_MONTH > day || MAX_DATE_IN_MONTH < day) {
+    private static void validateDateInMonth(final int date) {
+        if (MIN_DATE_IN_MONTH > date || MAX_DATE_IN_MONTH < date) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
         }
     }
