@@ -10,4 +10,8 @@ public enum MenuCategory {
     MenuCategory(String categoryName) {
         this.categoryName = categoryName;
     }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
 }
