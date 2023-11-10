@@ -27,6 +27,7 @@ public class OrderMenusValidator {
     public static void validateOrderMenus(final List<OrderMenu> menus) {
         validateMatchMenuItem(menus);
         validateDuplicateMenu(menus);
+        validateMenuCount(menus);
     }
 
     private static void validateMatchMenuItem(final List<OrderMenu> menus) {
@@ -45,6 +46,12 @@ public class OrderMenusValidator {
 
         if (count != menuNames.size()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+        }
+    }
+
+    private static void validateMenuCount(final List<OrderMenu> menus) {
+        if (menus.size() > 20) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_COUNT_MESSAGE.getMessage());
         }
     }
 }
