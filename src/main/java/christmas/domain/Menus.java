@@ -54,4 +54,8 @@ public class Menus {
 
         return totalPrice;
     }
+
+    public Map<MenuItem, Integer> getMenus() {
+        return Map.copyOf(menus);
+    }
 }
