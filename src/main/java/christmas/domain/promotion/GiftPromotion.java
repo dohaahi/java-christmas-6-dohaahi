@@ -11,6 +11,10 @@ public class GiftPromotion implements Promotion {
 
     @Override
     public int discountAmount(Menus menus, Date date) {
-        return 0;
+        if (menus.getTotalPrice() < MIN_ORDER_AMOUNT) {
+            return NO_DISCOUNT;
+        }
+
+        return giftItem.getMenuPrice();
     }
 }
