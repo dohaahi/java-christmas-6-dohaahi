@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.util.StringConverter.delimiterStringToList;
+import static christmas.validator.MenuValidator.validateOrderMenu;
 
 import java.util.List;
 
@@ -11,6 +12,8 @@ public class Menu {
 
     private Menu(String orderMenu) {
         List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
+        validateOrderMenu(menu);
+
         String menuName = menu.get(0);
         int menuCount = Integer.parseInt(menu.get(1));
 
