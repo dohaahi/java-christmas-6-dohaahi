@@ -117,5 +117,22 @@ public class MenusValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
         }
+
+        @DisplayName("음료만 주문하는 경우 예외 발생")
+        @Test
+        void test4() {
+            // given
+            String menus1 = "제로콜라-1";
+            String menus2 = "제로콜라-1, 레드와인-3, 샴페인-1";
+
+            // when
+            // then
+            assertThatThrownBy(() -> new Menus(menus1))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
+            assertThatThrownBy(() -> new Menus(menus2))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
+        }
     }
 }
