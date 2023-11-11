@@ -5,6 +5,8 @@ import static christmas.domain.promotion.MonthPromotion.MIN_DATE_IN_MONTH;
 import static christmas.validator.InputValidator.validateDateMatchedNumberRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
+import christmas.domain.exception.IllegalDateException;
+
 public class DateValidator {
     public static void validateInputDate(final String input) {
         validateValueEmpty(input);
@@ -17,7 +19,7 @@ public class DateValidator {
 
     private static void validateDateInMonth(final int date) {
         if (MIN_DATE_IN_MONTH > date || MAX_DATE_IN_MONTH < date) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
+            throw new IllegalDateException();
         }
     }
 }
