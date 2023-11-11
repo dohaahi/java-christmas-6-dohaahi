@@ -3,7 +3,7 @@ package christmas.view;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static christmas.domain.promotion.MonthPromotion.CURRENT_MONTH;
 import static christmas.validator.DateValidator.validateInputDate;
-import static christmas.validator.OrderMenusValidator.validateInputOrderMenus;
+import static christmas.validator.MenusValidator.validateInputOrderMenus;
 
 import christmas.domain.Date;
 import christmas.domain.Menus;

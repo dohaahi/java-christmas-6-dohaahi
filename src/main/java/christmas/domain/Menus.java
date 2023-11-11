@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import static christmas.util.StringConverter.delimiterStringToList;
-import static christmas.validator.OrderMenusValidator.validateOrderMenus;
+import static christmas.validator.MenusValidator.validateOrderMenus;
 
 import christmas.domain.menu.MenuItem;
 import java.util.ArrayList;
