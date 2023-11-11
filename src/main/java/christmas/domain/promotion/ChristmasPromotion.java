@@ -1,6 +1,6 @@
 package christmas.domain.promotion;
 
-import christmas.domain.Day;
+import christmas.domain.Date;
 import christmas.domain.MenuItems;
 
 public class ChristmasPromotion implements Promotion {
@@ -9,11 +9,11 @@ public class ChristmasPromotion implements Promotion {
     private static final int DAILY_DISCOUNT_AMOUNT = 100;
 
     @Override
-    public int discountAmount(final MenuItems menuItems, final Day day) {
-        if (day.getDate() > CHRISTMAS_DATE) {
+    public int discountAmount(final MenuItems menuItems, final Date date) {
+        if (date.getDate() > CHRISTMAS_DATE) {
             return NO_DISCOUNT;
         }
 
-        return DISCOUNT_AMOUNT_INIT + (day.getDate() * DAILY_DISCOUNT_AMOUNT);
+        return DISCOUNT_AMOUNT_INIT + (date.getDate() * DAILY_DISCOUNT_AMOUNT);
     }
 }

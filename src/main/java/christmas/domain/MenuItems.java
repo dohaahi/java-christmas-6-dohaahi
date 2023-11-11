@@ -3,7 +3,6 @@ package christmas.domain;
 import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.MenusValidator.validateOrderMenus;
 
-import christmas.domain.menu.Menu;
 import christmas.validator.ErrorMessage;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,16 +14,16 @@ public class MenuItems {
     public static final String DELIMITER = ", ";
     public static final int MIN_ORDER_COUNT = 1;
     public static final int MAX_ORDER_COUNT = 20;
-    private final Map<Menu, Integer> menus;
+    private final Map<christmas.domain.menu.MenuItems, Integer> menus;
 
     public MenuItems(final String input) {
         List<String> orderMenus = delimiterStringToList(DELIMITER, input);
         List<MenuItem> menuItems = converterStringToMenus(orderMenus);
         validateOrderMenus(menuItems);
 
-        Map<Menu, Integer> menuStorage = new HashMap<>();
+        Map<christmas.domain.menu.MenuItems, Integer> menuStorage = new HashMap<>();
         menuItems.forEach(menu -> {
-            menuStorage.put(Menu.getMenuItem(menu), menu.getCount());
+            menuStorage.put(christmas.domain.menu.MenuItems.getMenuItem(menu), menu.getCount());
         });
 
         this.menus = menuStorage;
@@ -48,14 +47,14 @@ public class MenuItems {
     public int getTotalPrice() {
         int totalPrice = 0;
 
-        for (Entry<Menu, Integer> menu : menus.entrySet()) {
+        for (Entry<christmas.domain.menu.MenuItems, Integer> menu : menus.entrySet()) {
             totalPrice += menu.getKey().getPrice() * menu.getValue();
         }
 
         return totalPrice;
     }
 
-    public Map<Menu, Integer> getMenus() {
+    public Map<christmas.domain.menu.MenuItems, Integer> getMenus() {
         return Map.copyOf(menus);
     }
 }

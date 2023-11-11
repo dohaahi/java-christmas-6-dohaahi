@@ -6,12 +6,12 @@ import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-public class Day {
+public class Date {
     public static final int CURRENT_MONTH = 12;
     private static final int CURRENT_YEAR = 2023;
     private final int day;
 
-    public Day(int day) {
+    public Date(int day) {
         validateDate(day);
 
         this.day = day;

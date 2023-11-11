@@ -5,7 +5,7 @@ import christmas.validator.ErrorMessage;
 import java.util.List;
 import java.util.Optional;
 
-public enum Menu {
+public enum MenuItems {
     MUSHROOM_SOUP("양송이수프", 6_000, MenuCategory.APPETIZER),
     TAPAS("타파스", 5_500, MenuCategory.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8_000, MenuCategory.APPETIZER),
@@ -19,7 +19,7 @@ public enum Menu {
     RED_WINE("레드와인", 60_000, MenuCategory.DRINK),
     CHAMPAGNE("샴페인", 25_000, MenuCategory.DRINK);
 
-    private static List<Menu> menuItems = List.of(
+    private static List<MenuItems> menuItems = List.of(
             MUSHROOM_SOUP,
             TAPAS,
             CAESAR_SALAD,
@@ -37,7 +37,7 @@ public enum Menu {
     private final int price;
     private final MenuCategory category;
 
-    Menu(String name, int price, MenuCategory category) {
+    MenuItems(String name, int price, MenuCategory category) {
         this.name = name;
         this.price = price;
         this.category = category;
@@ -48,8 +48,8 @@ public enum Menu {
                 .anyMatch(menuItem -> menuName.equals(menuItem.name));
     }
 
-    public static Menu getMenuItem(final MenuItem menuItem) {
-        Optional<Menu> findMenu = menuItems.stream()
+    public static MenuItems getMenuItem(final MenuItem menuItem) {
+        Optional<MenuItems> findMenu = menuItems.stream()
                 .filter(menuItem -> menuItem.name.equals(menuItem.getName()))
                 .findFirst();
 

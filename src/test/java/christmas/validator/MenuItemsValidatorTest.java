@@ -9,10 +9,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class MenuValidatorTest {
+public class MenuItemsValidatorTest {
     @Nested
     @DisplayName("validateInputOrderMenu 메소드 test")
-    class ValidateInputOrderMenuTestItem {
+    class ValidateInputOrderMenuTestItemItems {
         @DisplayName("빈 값이 입력되면 예외 발생")
         @Test
         void Value_Is_Empty() {
@@ -71,7 +71,7 @@ public class MenuValidatorTest {
 
     @Nested
     @DisplayName("validateOrderMenus 메소드 test")
-    class ValidateOrderMenuTest {
+    class ValidateOrderMenuTestItems {
         @DisplayName("중복되는 메뉴를 시키면 예외 발생")
         @Test
         void Duplicate_Menu_Order() {

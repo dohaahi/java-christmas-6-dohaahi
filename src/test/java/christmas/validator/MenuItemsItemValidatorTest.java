@@ -7,7 +7,7 @@ import christmas.domain.MenuItems;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class MenuItemValidatorTest {
+class MenuItemsItemValidatorTest {
     @DisplayName("주문한 메뉴 개수가 " + MIN_ORDER_COUNT + "개 미만인 경우 예외 발생")
     @Test
     void Order_Count_Under_Min() {
