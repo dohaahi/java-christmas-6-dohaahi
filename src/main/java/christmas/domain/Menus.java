@@ -12,6 +12,8 @@ import java.util.Map.Entry;
 
 public class Menus {
     public static final String DELIMITER = ", ";
+    public static final int MIN_ORDER_COUNT = 1;
+    public static final int MAX_ORDER_COUNT = 20;
     private final Map<MenuItem, Integer> menus;
 
     public Menus(final String input) {
