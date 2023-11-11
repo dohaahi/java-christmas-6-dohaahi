@@ -1,6 +1,7 @@
 package christmas.domain.menu;
 
 import christmas.domain.MenuItem;
+import christmas.exception.IllegalMenusException;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,13 @@ public enum Menu {
         }
 
         return findMenu.get();
+    }
+
+    public static Menu from(final String name) {
+        return MENUS.stream()
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .orElseThrow(IllegalMenusException::new);
     }
 
     public int getPrice() {
