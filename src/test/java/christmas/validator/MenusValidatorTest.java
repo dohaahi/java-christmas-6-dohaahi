@@ -73,7 +73,7 @@ public class MenusValidatorTest {
     class ValidateOrderMenusTest {
         @DisplayName("메뉴 목록에 존재하는 메뉴를 시키면 검증 통과")
         @Test
-        void test() {
+        void Order_Menu_In_Menu_Item() {
             // given
             String menus1 = "양송이수프-1";
             String menus2 = "양송이수프-1, 크리스마스파스타-3, 제로콜라-1";
@@ -86,7 +86,7 @@ public class MenusValidatorTest {
 
         @DisplayName("메뉴 목록에 존재하지 않는 메뉴를 시키면 예외 발생")
         @Test
-        void test2() {
+        void Order_Menu_Not_In_Menu_Item() {
             // given
             String menus1 = "브로콜리수프-1";
             String menus2 = "브로콜리수프-1, 윈터파스타-3, 아메리카노-1";
@@ -103,7 +103,7 @@ public class MenusValidatorTest {
 
         @DisplayName("중복되는 메뉴를 시키면 예외 발생")
         @Test
-        void test3() {
+        void Duplicate_Menu_Order() {
             // given
             String menus1 = "양송이수프-1, 양송이수프-4";
             String menus2 = "양송이수프-1, 크리스마스파스타-3, 제로콜라-1, 크리스마스파스타-2";
@@ -120,7 +120,7 @@ public class MenusValidatorTest {
 
         @DisplayName("음료만 주문하는 경우 예외 발생")
         @Test
-        void test4() {
+        void Order_Only_Drink() {
             // given
             String menus1 = "제로콜라-1";
             String menus2 = "제로콜라-1, 레드와인-3, 샴페인-1";
