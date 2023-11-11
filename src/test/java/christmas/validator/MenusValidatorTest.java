@@ -134,5 +134,29 @@ public class MenusValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
         }
+
+        @DisplayName("주문 개수가 20개 이하인 경우 검증 통과")
+        @Test
+        void Order_Count_Under_Max() {
+            // given
+            String menus = "시저샐러드-10, 티본스테이크-9, 크리스마스파스타-1"; // 총 20개 주문
+
+            // when
+            // then
+            new Menus(menus);
+        }
+
+        @DisplayName("주문 개수가 20개 초과된 경우 예외 발생")
+        @Test
+        void Order_Count_Exceeds_Max() {
+            // given
+            String menus = "시저샐러드-10, 티본스테이크-10, 크리스마스파스타-1"; // 총 21개 주문
+
+            // when
+            // then
+            assertThatThrownBy(() -> new Menus(menus))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.INVALID_INPUT_ORDER_MENU_COUNT_MESSAGE.getMessage());
+        }
     }
 }
