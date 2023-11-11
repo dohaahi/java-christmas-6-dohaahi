@@ -4,6 +4,7 @@ import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.MenusValidator.validateOrderMenus;
 
 import christmas.domain.menu.MenuItem;
+import christmas.validator.ErrorMessage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,10 +33,14 @@ public class Menus {
     private List<Menu> converterStringToMenus(List<String> orderMenus) {
         List<Menu> menus = new ArrayList<>();
 
-        orderMenus.forEach(orderMenu -> {
-            Menu menu = Menu.from(orderMenu);
-            menus.add(menu);
-        });
+        try {
+            orderMenus.forEach(orderMenu -> {
+                Menu menu = Menu.from(orderMenu);
+                menus.add(menu);
+            });
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+        }
 
         return menus;
     }
