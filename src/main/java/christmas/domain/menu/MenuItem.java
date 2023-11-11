@@ -44,9 +44,9 @@ public enum MenuItem {
             CHAMPAGNE
     );
 
-    public static boolean isMatchMenu(final Menu menu) {
+    public static boolean isMatchMenu(final String menuName) {
         return menuItems.stream()
-                .anyMatch(menuItem -> menu.getMenuName().equals(menuItem.menuName));
+                .anyMatch(menuItem -> menuName.equals(menuItem.menuName));
     }
 
     public static MenuItem getMenuItem(final Menu menu) {
