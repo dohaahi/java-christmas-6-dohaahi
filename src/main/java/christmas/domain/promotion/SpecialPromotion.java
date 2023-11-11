@@ -18,6 +18,6 @@ public class SpecialPromotion implements Promotion {
     }
 
     private boolean isValidSpecialDiscountPeriod(final Date date) {
-        return CHRISTMAS_DATE == date.getDate() || date.getDayOfWeek().equals("Sunday");
+        return CHRISTMAS_DATE == date.getDay() || date.getDayOfWeek().equals("Sunday");
     }
 }
