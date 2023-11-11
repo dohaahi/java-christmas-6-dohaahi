@@ -18,20 +18,7 @@ public enum Menu {
     RED_WINE("레드와인", 60_000, MenuCategory.DRINK),
     CHAMPAGNE("샴페인", 25_000, MenuCategory.DRINK);
 
-    private static List<Menu> menuItems = List.of(
-            MUSHROOM_SOUP,
-            TAPAS,
-            CAESAR_SALAD,
-            T_BONE_STEAK,
-            BARBECUE_LIP,
-            SEAFOOD_PASTA,
-            CHRISTMAS_PASTA,
-            CHOCO_CAKE,
-            ICE_CREAM,
-            ZERO_COLA,
-            RED_WINE,
-            CHAMPAGNE
-    );
+    private final static List<Menu> MENUS = List.of(values());
     private final String name;
     private final int price;
     private final MenuCategory category;
@@ -43,12 +30,12 @@ public enum Menu {
     }
 
     public static boolean isMatchMenu(final String menuName) {
-        return menuItems.stream()
+        return MENUS.stream()
                 .anyMatch(menuItem -> menuName.equals(menuItem.name));
     }
 
     public static Menu getMenuItem(final MenuItem menuItem) {
-        Optional<Menu> findMenu = menuItems.stream()
+        Optional<Menu> findMenu = MENUS.stream()
                 .filter(menuItem -> menuItem.name.equals(menuItem.getName()))
                 .findFirst();
 
