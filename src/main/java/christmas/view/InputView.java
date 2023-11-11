@@ -2,13 +2,13 @@ package christmas.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static christmas.domain.Date.CURRENT_MONTH;
+import static christmas.util.FunctionalInterfaces.retryIfFailure;
 import static christmas.validator.DateValidator.validateInputDate;
 import static christmas.validator.MenusValidator.validateInputOrderMenus;
 
 import christmas.domain.Date;
 import christmas.domain.MenuItems;
 import christmas.domain.order.Order;
-import java.util.function.Supplier;
 
 public class InputView {
     public static final String GREETING_MESSAGE = "안녕하세요! 우테코 식당 " + CURRENT_MONTH + "월 이벤트 플래너입니다.\n";
@@ -21,16 +21,6 @@ public class InputView {
         Date date = retryIfFailure(this::readVisitDate);
         MenuItems menus = retryIfFailure(this::readOrderMenus);
         return new Order(date, menus);
-    }
-
-    private <T> T retryIfFailure(Supplier<T> supplier) {
-        while (true) {
-            try {
-                return supplier.get();
-            } catch (IllegalArgumentException exception) {
-                System.out.println(exception.getMessage());
-            }
-        }
     }
 
     private Date readVisitDate() {
