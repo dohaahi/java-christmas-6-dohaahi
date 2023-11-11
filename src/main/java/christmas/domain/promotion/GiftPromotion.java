@@ -15,6 +15,6 @@ public class GiftPromotion implements Promotion {
             return NO_DISCOUNT;
         }
 
-        return giftItem.getMenuPrice();
+        return giftItem.getPrice();
     }
 }

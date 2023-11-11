@@ -33,24 +33,24 @@ public enum Menu {
             RED_WINE,
             CHAMPAGNE
     );
-    private final String menuName;
-    private final int menuPrice;
+    private final String name;
+    private final int price;
     private final MenuCategory category;
 
-    Menu(String menuName, int menuPrice, MenuCategory categoryName) {
-        this.menuName = menuName;
-        this.menuPrice = menuPrice;
-        this.category = categoryName;
+    Menu(String name, int price, MenuCategory category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
     }
 
     public static boolean isMatchMenu(final String menuName) {
         return menuItems.stream()
-                .anyMatch(menuItem -> menuName.equals(menuItem.menuName));
+                .anyMatch(menuItem -> menuName.equals(menuItem.name));
     }
 
     public static Menu getMenuItem(final MenuItem menuItem) {
         Optional<Menu> findMenu = menuItems.stream()
-                .filter(menuItem -> menuItem.menuName.equals(menuItem.getMenuName()))
+                .filter(menuItem -> menuItem.name.equals(menuItem.getName()))
                 .findFirst();
 
         if (findMenu.isEmpty()) {
@@ -60,19 +60,15 @@ public enum Menu {
         return findMenu.get();
     }
 
-    public int getMenuPrice() {
-        return menuPrice;
+    public int getPrice() {
+        return price;
     }
 
     public MenuCategory getCategory() {
         return category;
     }
 
-    public MenuCategory getCategory(final MenuItem menu) {
-        return menuItems.stream()
-                .filter(menuItem -> menuItem.menuName.equals(menu.getName()))
-                .findAny()
-                .get()
-                .getCategory();
+    public MenuCategory getCategory(final MenuItem menuItem) {
+        return category;
     }
 }

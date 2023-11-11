@@ -49,7 +49,7 @@ public class MenuItems {
         int totalPrice = 0;
 
         for (Entry<Menu, Integer> menu : menus.entrySet()) {
-            totalPrice += menu.getKey().getMenuPrice() * menu.getValue();
+            totalPrice += menu.getKey().getPrice() * menu.getValue();
         }
 
         return totalPrice;
