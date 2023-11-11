@@ -14,9 +14,17 @@ public class WeekdayPromotion implements Promotion {
     private final DayOfWeek startPeriod = DayOfWeek.SUNDAY;
     private final DayOfWeek endPeriod = DayOfWeek.THURSDAY;
 
-public class WeekdayPromotion {
-    private final DayOfWeek startPeriod = DayOfWeek.FRIDAY;
-    private final DayOfWeek endPeriod = DayOfWeek.SATURDAY;
-    private final MenuCategory discountItem = MenuCategory.MAIN;
-    private final int discountAmount = 2_023;
+    @Override
+    public int discountAmount(Menus menus, Date date) {
+        int totalDiscountAmount = 0;
+
+        Set<Entry<MenuItem, Integer>> entries = menus.getMenus().entrySet();
+        for (Entry<MenuItem, Integer> entry : entries) {
+            if (entry.getKey().getCategory().equals(WEEKDAY_DISCOUNT_CATEGORY)) {
+                totalDiscountAmount += WEEKDAY_DISCOUNT_AMOUNT * entry.getValue();
+            }
+        }
+
+        return totalDiscountAmount;
+    }
 }
