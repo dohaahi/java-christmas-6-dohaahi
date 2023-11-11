@@ -11,7 +11,6 @@ import christmas.domain.Menus;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class OrderMenusValidator {
     public static void validateInputOrderMenus(final String input) {
@@ -29,7 +28,7 @@ public class OrderMenusValidator {
     public static void validateOrderMenus(final List<Menu> menus) {
         validateMatchMenuItem(menus);
         validateDuplicateMenu(menus);
-        isDrinkOnly(menus);
+        validateDrinkOnly(menus);
         validateMenuCount(menus);
     }
 
@@ -52,12 +51,16 @@ public class OrderMenusValidator {
         }
     }
 
-    private static void isDrinkOnly(final List<Menu> menus) {
-        Set<String> menuCategory = new HashSet<>();
+    private static void validateDrinkOnly(final List<Menu> menus) {
+        List<MenuCategory> menuCategories = menus.stream()
+                .map(menu -> MenuItem.getMenuItem(menu).getCategory())
+                .toList();
 
-        menus.forEach(menu -> menuCategory.add(menu.getMenuName()));
+        boolean isDrinkOnly = menuCategories.stream()
+                .filter(MenuCategory.DRINK::equals)
+                .count() == menus.size();
 
-        if (menuCategory.size() == 1 && menuCategory.contains(MenuCategory.DRINK.getCategoryName())) {
+        if (isDrinkOnly) {
             throw new IllegalArgumentException(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
         }
     }
