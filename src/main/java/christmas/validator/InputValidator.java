@@ -1,6 +1,7 @@
 package christmas.validator;
 
 import christmas.domain.MenuItem;
+import christmas.domain.exception.IllegalInputException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -10,25 +11,25 @@ public class InputValidator {
 
     public static void validateValueEmpty(final String input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.ENTER_VALUE_MASSAGE.getMessage());
+            throw new IllegalInputException();
         }
     }
 
     public static void validateValueEmpty(final List<String> input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.ENTER_VALUE_MASSAGE.getMessage());
+            throw new IllegalInputException();
         }
     }
 
     public static void validateDateMatchedNumberRegex(final String input) {
         if (!Pattern.matches(NUMBER_REGEX, input)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_NUMBER_MESSAGE.getMessage());
+            throw new IllegalInputException();
         }
     }
 
     public static void validateOrderMenuMatchedMenuOrderRegex(final String input) {
         if (!Pattern.matches(ORDER_MENU_REGEX, input)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+            throw new IllegalInputException();
         }
     }
 }
