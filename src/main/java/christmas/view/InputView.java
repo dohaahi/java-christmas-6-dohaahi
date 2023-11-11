@@ -2,13 +2,18 @@ package christmas.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static christmas.domain.Date.CURRENT_MONTH;
+import static christmas.domain.MenuItems.DELIMITER;
 import static christmas.util.FunctionalInterfaces.retryIfFailure;
+import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.DateValidator.validateInputDate;
 import static christmas.validator.MenusValidator.validateInputOrderMenus;
 
 import christmas.domain.Date;
+import christmas.domain.MenuItem;
 import christmas.domain.MenuItems;
 import christmas.domain.order.Order;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputView {
     public static final String GREETING_MESSAGE = "안녕하세요! 우테코 식당 " + CURRENT_MONTH + "월 이벤트 플래너입니다.\n";
@@ -36,6 +41,20 @@ public class InputView {
         final String input = readLine().trim();
         validateInputOrderMenus(input);
 
-        return new MenuItems(input);
+        List<String> orderMenus = delimiterStringToList(DELIMITER, input);
+        List<MenuItem> menuItems = retryIfFailure(() -> converterStringToMenu(orderMenus));
+
+        return new MenuItems(menuItems);
+    }
+
+    private List<MenuItem> converterStringToMenu(List<String> orderMenus) {
+        List<MenuItem> menuItems = new ArrayList<>();
+
+        orderMenus.forEach(orderMenu -> {
+            MenuItem menuItem = MenuItem.from(orderMenu);
+            menuItems.add(menuItem);
+        });
+
+        return menuItems;
     }
 }
