@@ -68,4 +68,12 @@ public enum MenuItem {
     public MenuCategory getCategory() {
         return category;
     }
+
+    public MenuCategory getCategory(final Menu menu) {
+        return menuItems.stream()
+                .filter(menuItem -> menuItem.menuName.equals(menu.getMenuName()))
+                .findAny()
+                .get()
+                .getCategory();
+    }
 }
