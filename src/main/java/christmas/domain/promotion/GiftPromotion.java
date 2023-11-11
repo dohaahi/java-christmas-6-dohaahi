@@ -1,11 +1,11 @@
 package christmas.domain.promotion;
 
 import christmas.domain.Date;
-import christmas.domain.menu.MenuItems;
+import christmas.domain.menu.Menu;
 
 public class GiftPromotion implements Promotion {
     private static final int MIN_ORDER_AMOUNT = 120_000;
-    private final MenuItems giftItem = MenuItems.CHAMPAGNE;
+    private final Menu giftItem = Menu.CHAMPAGNE;
     private final int giftCount = 1;
 
     @Override

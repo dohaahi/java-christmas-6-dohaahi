@@ -1,8 +1,8 @@
 package christmas.domain.promotion;
 
 import christmas.domain.Date;
+import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
-import christmas.domain.menu.MenuItems;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -31,8 +31,8 @@ public class PeriodPromotion implements Promotion {
     private int weekendDiscountAmount(final christmas.domain.MenuItems menuItems, final Date date) {
         int discountAmount = 0;
 
-        Set<Entry<MenuItems, Integer>> entries = menuItems.getMenus().entrySet();
-        for (Entry<MenuItems, Integer> entry : entries) {
+        Set<Entry<Menu, Integer>> entries = menuItems.getMenus().entrySet();
+        for (Entry<Menu, Integer> entry : entries) {
             if (entry.getKey().getCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
                 discountAmount += WEEKEND_DISCOUNT_AMOUNT * entry.getValue();
             }
@@ -44,8 +44,8 @@ public class PeriodPromotion implements Promotion {
     private int weekdayDiscountAmount(final christmas.domain.MenuItems menuItems, final Date date) {
         int discountAmount = 0;
 
-        Set<Entry<MenuItems, Integer>> entries = menuItems.getMenus().entrySet();
-        for (Entry<MenuItems, Integer> entry : entries) {
+        Set<Entry<Menu, Integer>> entries = menuItems.getMenus().entrySet();
+        for (Entry<Menu, Integer> entry : entries) {
             if (entry.getKey().getCategory().equals(WEEKDAY_DISCOUNT_CATEGORY)) {
                 discountAmount += WEEKDAY_DISCOUNT_AMOUNT * entry.getValue();
             }

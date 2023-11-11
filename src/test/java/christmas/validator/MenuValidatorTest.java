@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class MenuItemsValidatorTest {
+public class MenuValidatorTest {
     @Nested
     @DisplayName("validateInputOrderMenu 메소드 test")
     class ValidateInputOrderMenuTestItemItems {

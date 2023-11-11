@@ -6,8 +6,8 @@ import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrd
 import static christmas.validator.InputValidator.validateValueEmpty;
 
 import christmas.domain.MenuItem;
+import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
-import christmas.domain.menu.MenuItems;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -44,7 +44,7 @@ public class MenusValidator {
 
     private static void validateDrinkOnly(final List<MenuItem> menuItems) {
         List<MenuCategory> menuCategories = menuItems.stream()
-                .map(menu -> MenuItems.getMenuItem(menu).getCategory())
+                .map(menu -> Menu.getMenuItem(menu).getCategory())
                 .toList();
 
         boolean isDrinkOnly = menuCategories.stream()
