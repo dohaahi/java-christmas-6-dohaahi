@@ -66,7 +66,11 @@ public class OrderMenusValidator {
     }
 
     private static void validateMenuCount(final List<Menu> menus) {
-        if (menus.size() > 20) {
+        int totalCount = menus.stream()
+                .mapToInt(Menu::getMenuCount)
+                .sum();
+
+        if (totalCount > 20) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_COUNT_MESSAGE.getMessage());
         }
     }
