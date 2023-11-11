@@ -10,10 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class DateValidatorTest {
+class DayValidatorTest {
     @Nested
     @DisplayName("validateInputDate 메소드 test")
-    class ValidateInputDateTest {
+    class ValidateInputDayTest {
         @DisplayName("빈 값이 입력되면 예외 발생")
         @Test
         void Value_Is_Empty() {
@@ -60,7 +60,7 @@ class DateValidatorTest {
 
     @Nested
     @DisplayName("validateDate 메소드 test")
-    class ValidateDateTest {
+    class ValidateDayTest {
         @DisplayName("날짜가 " + MIN_DATE_IN_MONTH + "~" + MAX_DATE_IN_MONTH + " 범위에 포함 되면 검증 통과")
         @Test
         void Date_In_Month() {

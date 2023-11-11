@@ -1,11 +1,11 @@
 package christmas.domain.menu;
 
-import christmas.domain.Menu;
+import christmas.domain.MenuItem;
 import christmas.validator.ErrorMessage;
 import java.util.List;
 import java.util.Optional;
 
-public enum MenuItem {
+public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, MenuCategory.APPETIZER),
     TAPAS("타파스", 5_500, MenuCategory.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8_000, MenuCategory.APPETIZER),
@@ -19,17 +19,7 @@ public enum MenuItem {
     RED_WINE("레드와인", 60_000, MenuCategory.DRINK),
     CHAMPAGNE("샴페인", 25_000, MenuCategory.DRINK);
 
-    private final String menuName;
-    private final int menuPrice;
-    private final MenuCategory category;
-
-    MenuItem(String menuName, int menuPrice, MenuCategory categoryName) {
-        this.menuName = menuName;
-        this.menuPrice = menuPrice;
-        this.category = categoryName;
-    }
-
-    private static List<MenuItem> menuItems = List.of(
+    private static List<Menu> menuItems = List.of(
             MUSHROOM_SOUP,
             TAPAS,
             CAESAR_SALAD,
@@ -43,15 +33,24 @@ public enum MenuItem {
             RED_WINE,
             CHAMPAGNE
     );
+    private final String menuName;
+    private final int menuPrice;
+    private final MenuCategory category;
+
+    Menu(String menuName, int menuPrice, MenuCategory categoryName) {
+        this.menuName = menuName;
+        this.menuPrice = menuPrice;
+        this.category = categoryName;
+    }
 
     public static boolean isMatchMenu(final String menuName) {
         return menuItems.stream()
                 .anyMatch(menuItem -> menuName.equals(menuItem.menuName));
     }
 
-    public static MenuItem getMenuItem(final Menu menu) {
-        Optional<MenuItem> findMenu = menuItems.stream()
-                .filter(menuItem -> menuItem.menuName.equals(menu.getMenuName()))
+    public static Menu getMenuItem(final MenuItem menuItem) {
+        Optional<Menu> findMenu = menuItems.stream()
+                .filter(menuItem -> menuItem.menuName.equals(menuItem.getMenuName()))
                 .findFirst();
 
         if (findMenu.isEmpty()) {
@@ -69,7 +68,7 @@ public enum MenuItem {
         return category;
     }
 
-    public MenuCategory getCategory(final Menu menu) {
+    public MenuCategory getCategory(final MenuItem menu) {
         return menuItems.stream()
                 .filter(menuItem -> menuItem.menuName.equals(menu.getMenuName()))
                 .findAny()

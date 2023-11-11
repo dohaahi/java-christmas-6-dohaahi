@@ -5,12 +5,12 @@ import static christmas.validator.MenuValidator.validateOrderMenu;
 
 import java.util.List;
 
-public class Menu {
+public class MenuItem {
     public static final String DELIMITER = "-";
     private final String menuName;
     private final int menuCount;
 
-    private Menu(String orderMenu) {
+    private MenuItem(String orderMenu) {
         List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
         validateOrderMenu(menu);
 
@@ -21,8 +21,8 @@ public class Menu {
         this.menuCount = menuCount;
     }
 
-    public static Menu from(final String orderMenu) {
-        return new Menu(orderMenu);
+    public static MenuItem from(final String orderMenu) {
+        return new MenuItem(orderMenu);
     }
 
     public String getMenuName() {

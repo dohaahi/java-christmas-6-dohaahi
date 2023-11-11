@@ -1,14 +1,14 @@
 package christmas.validator;
 
-import static christmas.domain.Menus.MAX_ORDER_COUNT;
+import static christmas.domain.MenuItems.MAX_ORDER_COUNT;
 import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
+import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
-import christmas.domain.menu.MenuItem;
-import christmas.domain.Menu;
-import christmas.domain.Menus;
+import christmas.domain.MenuItem;
+import christmas.domain.MenuItems;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class MenusValidator {
     public static void validateInputOrderMenus(final String input) {
         validateValueEmpty(input);
-        List<String> orderMenus = delimiterStringToList(Menus.DELIMITER, input);
+        List<String> orderMenus = delimiterStringToList(MenuItems.DELIMITER, input);
 
         if (orderMenus.size() == 1) {
             validateOrderMenuMatchedMenuOrderRegex(input);
@@ -26,15 +26,15 @@ public class MenusValidator {
         orderMenus.forEach(InputValidator::validateOrderMenuMatchedMenuOrderRegex);
     }
 
-    public static void validateOrderMenus(final List<Menu> menus) {
-        validateDuplicateMenu(menus);
-        validateDrinkOnly(menus);
-        validateMaxOrderCount(menus);
+    public static void validateOrderMenus(final List<MenuItem> menuItems) {
+        validateDuplicateMenu(menuItems);
+        validateDrinkOnly(menuItems);
+        validateMaxOrderCount(menuItems);
     }
 
-    private static void validateDuplicateMenu(final List<Menu> menus) {
+    private static void validateDuplicateMenu(final List<MenuItem> menuItems) {
         List<String> menuNames = new ArrayList<>();
-        menus.forEach(menu -> menuNames.add(menu.getMenuName()));
+        menuItems.forEach(menu -> menuNames.add(menu.getMenuName()));
 
         long count = new HashSet<>(menuNames).size();
 
@@ -43,23 +43,23 @@ public class MenusValidator {
         }
     }
 
-    private static void validateDrinkOnly(final List<Menu> menus) {
-        List<MenuCategory> menuCategories = menus.stream()
-                .map(menu -> MenuItem.getMenuItem(menu).getCategory())
+    private static void validateDrinkOnly(final List<MenuItem> menuItems) {
+        List<MenuCategory> menuCategories = menuItems.stream()
+                .map(menu -> Menu.getMenuItem(menu).getCategory())
                 .toList();
 
         boolean isDrinkOnly = menuCategories.stream()
                 .filter(MenuCategory.DRINK::equals)
-                .count() == menus.size();
+                .count() == menuItems.size();
 
         if (isDrinkOnly) {
             throw new IllegalArgumentException(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
         }
     }
 
-    private static void validateMaxOrderCount(final List<Menu> menus) {
-        int totalCount = menus.stream()
-                .mapToInt(Menu::getMenuCount)
+    private static void validateMaxOrderCount(final List<MenuItem> menuItems) {
+        int totalCount = menuItems.stream()
+                .mapToInt(MenuItem::getMenuCount)
                 .sum();
 
         if (totalCount > MAX_ORDER_COUNT) {

@@ -1,17 +1,17 @@
 package christmas.domain.promotion;
 
-import christmas.domain.Date;
-import christmas.domain.Menus;
-import christmas.domain.menu.MenuItem;
+import christmas.domain.Day;
+import christmas.domain.MenuItems;
+import christmas.domain.menu.Menu;
 
 public class GiftPromotion implements Promotion {
     private static final int MIN_ORDER_AMOUNT = 120_000;
-    private final MenuItem giftItem = MenuItem.CHAMPAGNE;
+    private final Menu giftItem = Menu.CHAMPAGNE;
     private final int giftCount = 1;
 
     @Override
-    public int discountAmount(Menus menus, Date date) {
-        if (menus.getTotalPrice() < MIN_ORDER_AMOUNT) {
+    public int discountAmount(MenuItems menuItems, Day day) {
+        if (menuItems.getTotalPrice() < MIN_ORDER_AMOUNT) {
             return NO_DISCOUNT;
         }
 

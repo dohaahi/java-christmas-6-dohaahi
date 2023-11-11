@@ -2,22 +2,22 @@ package christmas.domain.promotion;
 
 import static christmas.domain.promotion.ChristmasPromotion.CHRISTMAS_DATE;
 
-import christmas.domain.Date;
-import christmas.domain.Menus;
+import christmas.domain.Day;
+import christmas.domain.MenuItems;
 
 public class SpecialPromotion implements Promotion {
     public static final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
 
     @Override
-    public int discountAmount(Menus menus, Date date) {
-        if (!isValidSpecialDiscountPeriod(date)) {
+    public int discountAmount(MenuItems menuItems, Day day) {
+        if (!isValidSpecialDiscountPeriod(day)) {
             return NO_DISCOUNT;
         }
 
         return SPECIAL_DISCOUNT_AMOUNT;
     }
 
-    private boolean isValidSpecialDiscountPeriod(final Date date) {
-        return CHRISTMAS_DATE == date.getDate() || date.getDayOfWeek().equals("Sunday");
+    private boolean isValidSpecialDiscountPeriod(final Day day) {
+        return CHRISTMAS_DATE == day.getDate() || day.getDayOfWeek().equals("Sunday");
     }
 }

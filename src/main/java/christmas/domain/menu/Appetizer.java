@@ -3,10 +3,10 @@ package christmas.domain.menu;
 import java.util.List;
 
 public class Appetizer {
-    private final List<MenuItem> menuItems;
+    private final List<Menu> menuItems;
 
-    public Appetizer(List<MenuItem> menuItems) {
-        List<MenuItem> menus = menuItems.stream()
+    public Appetizer(List<Menu> menuItems) {
+        List<Menu> menus = menuItems.stream()
                 .filter(menuItem -> menuItem.getCategory().equals(MenuCategory.APPETIZER))
                 .toList();
 

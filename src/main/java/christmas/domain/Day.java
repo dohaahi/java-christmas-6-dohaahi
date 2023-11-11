@@ -6,25 +6,24 @@ import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-public class Date {
-    private static final int CURRENT_YEAR = 2023;
+public class Day {
     public static final int CURRENT_MONTH = 12;
+    private static final int CURRENT_YEAR = 2023;
+    private final int day;
 
-    private final int date;
+    public Day(int day) {
+        validateDate(day);
 
-    public Date(int date) {
-        validateDate(date);
-
-        this.date = date;
+        this.day = day;
     }
 
     public String getDayOfWeek() {
-        return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, date)
+        return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, day)
                 .getDayOfWeek()
                 .getDisplayName(TextStyle.FULL, Locale.US);
     }
 
-    public int getDate() {
-        return date;
+    public int getDay() {
+        return day;
     }
 }
