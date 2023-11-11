@@ -5,10 +5,10 @@ import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
-import christmas.domain.menu.Menu;
-import christmas.domain.menu.MenuCategory;
 import christmas.domain.MenuItem;
 import christmas.domain.MenuItems;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuCategory;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -34,7 +34,7 @@ public class MenusValidator {
 
     private static void validateDuplicateMenu(final List<MenuItem> menuItems) {
         List<String> menuNames = new ArrayList<>();
-        menuItems.forEach(menu -> menuNames.add(menu.getMenuName()));
+        menuItems.forEach(menu -> menuNames.add(menu.getName()));
 
         long count = new HashSet<>(menuNames).size();
 
@@ -59,7 +59,7 @@ public class MenusValidator {
 
     private static void validateMaxOrderCount(final List<MenuItem> menuItems) {
         int totalCount = menuItems.stream()
-                .mapToInt(MenuItem::getMenuCount)
+                .mapToInt(MenuItem::getCount)
                 .sum();
 
         if (totalCount > MAX_ORDER_COUNT) {

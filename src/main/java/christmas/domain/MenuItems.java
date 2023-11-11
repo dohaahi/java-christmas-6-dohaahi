@@ -24,7 +24,7 @@ public class MenuItems {
 
         Map<Menu, Integer> menuStorage = new HashMap<>();
         menuItems.forEach(menu -> {
-            menuStorage.put(Menu.getMenuItem(menu), menu.getMenuCount());
+            menuStorage.put(Menu.getMenuItem(menu), menu.getCount());
         });
 
         this.menus = menuStorage;

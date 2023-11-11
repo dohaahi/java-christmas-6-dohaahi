@@ -70,7 +70,7 @@ public enum Menu {
 
     public MenuCategory getCategory(final MenuItem menu) {
         return menuItems.stream()
-                .filter(menuItem -> menuItem.menuName.equals(menu.getMenuName()))
+                .filter(menuItem -> menuItem.menuName.equals(menu.getName()))
                 .findAny()
                 .get()
                 .getCategory();
