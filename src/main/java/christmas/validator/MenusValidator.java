@@ -6,6 +6,7 @@ import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrd
 import static christmas.validator.InputValidator.validateValueEmpty;
 
 import christmas.domain.MenuItem;
+import christmas.domain.exception.IllegalMenusException;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class MenusValidator {
         long count = new HashSet<>(menuNames).size();
 
         if (count != menuNames.size()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+            throw new IllegalMenusException();
         }
     }
 
@@ -52,7 +53,7 @@ public class MenusValidator {
                 .count() == menuItems.size();
 
         if (isDrinkOnly) {
-            throw new IllegalArgumentException(ErrorMessage.DO_NOT_JUST_ORDER_DRINK_MESSAGE.getMessage());
+            throw new IllegalMenusException();
         }
     }
 
@@ -62,7 +63,7 @@ public class MenusValidator {
                 .sum();
 
         if (totalCount > MAX_ORDER_COUNT) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_COUNT_MESSAGE.getMessage());
+            throw new IllegalMenusException();
         }
     }
 }

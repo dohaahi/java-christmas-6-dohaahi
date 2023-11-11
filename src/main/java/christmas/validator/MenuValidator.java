@@ -2,6 +2,7 @@ package christmas.validator;
 
 import static christmas.domain.MenuItems.MIN_ORDER_COUNT;
 
+import christmas.domain.exception.IllegalMenusException;
 import christmas.domain.menu.Menu;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class MenuValidator {
         int menuCount = Integer.parseInt(menu.get(1));
 
         if (menuCount < MIN_ORDER_COUNT) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+            throw new IllegalMenusException();
         }
     }
 
@@ -23,7 +24,7 @@ public class MenuValidator {
         String menuName = menu.get(0);
 
         if (!Menu.isMatchMenu(menuName)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
+            throw new IllegalMenusException();
         }
     }
 }
