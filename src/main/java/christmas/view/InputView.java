@@ -7,7 +7,6 @@ import static christmas.validator.MenusValidator.validateInputOrderMenus;
 
 import christmas.domain.Date;
 import christmas.domain.MenuItems;
-import christmas.domain.exception.IllegalMenusException;
 import christmas.domain.order.Order;
 import java.util.function.Supplier;
 
@@ -28,7 +27,7 @@ public class InputView {
         while (true) {
             try {
                 return supplier.get();
-            } catch (IllegalMenusException exception) {
+            } catch (IllegalArgumentException exception) {
                 System.out.println(exception.getMessage());
             }
         }
