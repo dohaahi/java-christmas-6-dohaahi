@@ -2,8 +2,8 @@ package christmas.validator;
 
 import static christmas.domain.MenuItems.MIN_ORDER_COUNT;
 
-import christmas.domain.exception.IllegalMenusException;
 import christmas.domain.menu.Menu;
+import christmas.exception.IllegalMenusException;
 import java.util.List;
 
 public class MenuValidator {

@@ -6,9 +6,9 @@ import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrd
 import static christmas.validator.InputValidator.validateValueEmpty;
 
 import christmas.domain.MenuItem;
-import christmas.domain.exception.IllegalMenusException;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
+import christmas.exception.IllegalMenusException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
