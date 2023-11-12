@@ -4,6 +4,7 @@ import static christmas.domain.promotion.ChristmasPromotion.CHRISTMAS_DATE;
 
 import christmas.domain.Date;
 import christmas.domain.MenuItems;
+import java.time.DayOfWeek;
 
 public class SpecialPromotion implements Promotion {
     public static final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
@@ -18,6 +19,6 @@ public class SpecialPromotion implements Promotion {
     }
 
     private boolean isValidSpecialDiscountPeriod(final Date date) {
-        return CHRISTMAS_DATE == date.getDay() || date.getDayOfWeek().equals("Sunday");
+        return date.isMatch(CHRISTMAS_DATE) || date.isMatch(DayOfWeek.SUNDAY);
     }
 }
