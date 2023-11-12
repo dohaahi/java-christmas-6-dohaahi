@@ -21,7 +21,7 @@ public class MenuItems {
         return totalPrice() < price;
     }
 
-    private int totalPrice() {
+    public int totalPrice() {
         return menuItems.stream().mapToInt(menuItem -> menuItem.getCount() * menuItem.getPrice()).sum();
     }
 
