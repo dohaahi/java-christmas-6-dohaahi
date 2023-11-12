@@ -1,11 +1,10 @@
 package christmas.domain.promotion;
 
 import christmas.domain.Date;
-import christmas.domain.menu.Menu;
+import christmas.domain.MenuItems;
 import christmas.domain.menu.MenuCategory;
+import java.time.DayOfWeek;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class PeriodPromotion implements Promotion {
     public static final MenuCategory WEEKDAY_DISCOUNT_CATEGORY = MenuCategory.DESSERT;
@@ -23,34 +22,20 @@ public class PeriodPromotion implements Promotion {
     }
 
     private boolean isWeekend(final Date date) {
-        final List<String> weekend = List.of("Friday", "Saturday");
+        final List<DayOfWeek> weekend = List.of(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
 
         return weekend.contains(date.getDayOfWeek());
     }
 
-    private int weekendDiscountAmount(final christmas.domain.MenuItems menuItems, final Date date) {
-        int discountAmount = 0;
-
-        Set<Entry<Menu, Integer>> entries = menuItems.getMenus().entrySet();
-        for (Entry<Menu, Integer> entry : entries) {
-            if (entry.getKey().getCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
-                discountAmount += WEEKEND_DISCOUNT_AMOUNT * entry.getValue();
-            }
-        }
-
-        return discountAmount;
+    private int weekendDiscountAmount(final MenuItems menuItems, final Date date) {
+        return (int) menuItems.getMenuItems().stream()
+                .filter(menuItem -> WEEKEND_DISCOUNT_CATEGORY.equals(menuItem.getCategory()))
+                .count() * WEEKEND_DISCOUNT_AMOUNT;
     }
 
-    private int weekdayDiscountAmount(final christmas.domain.MenuItems menuItems, final Date date) {
-        int discountAmount = 0;
-
-        Set<Entry<Menu, Integer>> entries = menuItems.getMenus().entrySet();
-        for (Entry<Menu, Integer> entry : entries) {
-            if (entry.getKey().getCategory().equals(WEEKDAY_DISCOUNT_CATEGORY)) {
-                discountAmount += WEEKDAY_DISCOUNT_AMOUNT * entry.getValue();
-            }
-        }
-
-        return discountAmount;
+    private int weekdayDiscountAmount(final MenuItems menuItems, final Date date) {
+        return (int) menuItems.getMenuItems().stream()
+                .filter(menuItem -> WEEKDAY_DISCOUNT_CATEGORY.equals(menuItem.getCategory()))
+                .count() * WEEKDAY_DISCOUNT_AMOUNT;
     }
 }
