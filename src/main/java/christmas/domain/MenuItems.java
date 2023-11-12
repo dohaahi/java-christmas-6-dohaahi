@@ -2,9 +2,7 @@ package christmas.domain;
 
 import static christmas.validator.MenusValidator.validateOrderMenus;
 
-import christmas.domain.menu.Menu;
 import java.util.List;
-import java.util.Map;
 
 public class MenuItems {
     public static final String DELIMITER = ", ";
@@ -28,7 +26,7 @@ public class MenuItems {
         return totalPrice;
     }
 
-    public Map<Menu, Integer> getMenus() {
-        return Map.copyOf(menus);
+    public List<MenuItem> getMenuItems() {
+        return List.copyOf(menuItems);
     }
 }
