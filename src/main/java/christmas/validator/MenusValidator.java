@@ -54,7 +54,7 @@ public class MenusValidator {
 
     private static List<MenuCategory> menuCategories(final List<MenuItem> menuItems) {
         return menuItems.stream()
-                .map(menu -> Menu.getMenuItem(menu).getCategory())
+                .map(menu -> Menu.from(menu.getName()).getCategory())
                 .distinct()
                 .toList();
     }
