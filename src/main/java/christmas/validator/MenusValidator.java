@@ -26,9 +26,9 @@ public class MenusValidator {
         orderMenus.forEach(InputValidator::validateOrderMenuMatchedMenuOrderRegex);
     }
 
-    public static void validateOrderMenus(final List<MenuItem> menuItems) {
+    public static void validateOrderMenus(final List<MenuItem> menuItems, final MenuCategory menuCategory) {
         validateDuplicateMenu(menuItems);
-        validateDrinkOnly(menuItems);
+        validateSingleOrderExceptionCategory(menuItems, menuCategory);
         validateMaxOrderCount(menuItems);
     }
 
@@ -43,24 +43,29 @@ public class MenusValidator {
         }
     }
 
-    private static void validateDrinkOnly(final List<MenuItem> menuItems) {
-        List<MenuCategory> menuCategories = menuItems.stream()
-                .map(menu -> Menu.getMenuItem(menu).getCategory())
-                .toList();
+    private static void validateSingleOrderExceptionCategory(final List<MenuItem> menuItems,
+                                                             final MenuCategory menuCategory) {
+        final List<MenuCategory> menuCategories = menuCategories(menuItems);
 
-        boolean isDrinkOnly = menuCategories.stream()
-                .filter(MenuCategory.DRINK::equals)
-                .count() == menuItems.size();
-
-        if (isDrinkOnly) {
+        if (isSingleOrderExceptionCategory(menuCategories, menuCategory)) {
             throw new IllegalMenusException();
         }
     }
 
+    private static List<MenuCategory> menuCategories(final List<MenuItem> menuItems) {
+        return menuItems.stream()
+                .map(menu -> Menu.getMenuItem(menu).getCategory())
+                .distinct()
+                .toList();
+    }
+
+    private static boolean isSingleOrderExceptionCategory(final List<MenuCategory> menuCategories,
+                                                          final MenuCategory menuCategory) {
+        return menuCategories.size() == 1 && menuCategories.get(0).equals(menuCategory);
+    }
+
     private static void validateMaxOrderCount(final List<MenuItem> menuItems) {
-        int totalCount = menuItems.stream()
-                .mapToInt(MenuItem::getCount)
-                .sum();
+        int totalCount = menuItems.stream().mapToInt(MenuItem::getCount).sum();
 
         if (totalCount > MAX_ORDER_COUNT) {
             throw new IllegalMenusException();
