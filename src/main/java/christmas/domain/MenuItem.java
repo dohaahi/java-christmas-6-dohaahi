@@ -3,11 +3,12 @@ package christmas.domain;
 import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.MenuValidator.validateOrderMenu;
 
+import christmas.domain.menu.Menu;
 import java.util.List;
 
 public class MenuItem {
     public static final String DELIMITER = "-";
-    private final String name;
+    private final Menu menu;
     private final int count;
 
     private MenuItem(String orderMenu) {
@@ -17,7 +18,7 @@ public class MenuItem {
         String name = menu.get(0);
         int count = Integer.parseInt(menu.get(1));
 
-        this.name = name;
+        this.menu = Menu.from(name);
         this.count = count;
     }
 
@@ -26,10 +27,14 @@ public class MenuItem {
     }
 
     public String getName() {
-        return name;
+        return menu.name();
     }
 
     public int getCount() {
         return count;
+    }
+
+    public int getPrice() {
+        return menu.getPrice();
     }
 }
