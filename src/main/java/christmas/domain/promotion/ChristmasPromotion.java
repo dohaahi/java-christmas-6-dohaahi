@@ -14,6 +14,6 @@ public class ChristmasPromotion implements Promotion {
             return NO_DISCOUNT;
         }
 
-        return DISCOUNT_AMOUNT_INIT + (date.getDay() * DAILY_DISCOUNT_AMOUNT);
+        return DISCOUNT_AMOUNT_INIT + (date.minus(1) * DAILY_DISCOUNT_AMOUNT);
     }
 }

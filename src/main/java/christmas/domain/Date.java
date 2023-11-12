@@ -20,12 +20,12 @@ public class Date {
         return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, day).getDayOfWeek();
     }
 
-    public boolean isMatch(final int day) {
-        return this.day == day;
-    }
-
     public boolean isPassed(final int day) {
         return this.day > day;
+    }
+
+    public int minus(final int day) {
+        return this.day - day;
     }
 
     public int getDay() {
