@@ -4,10 +4,10 @@ import christmas.domain.date.Date;
 import christmas.domain.menu.MenuItems;
 
 public class OrderElement {
-    private final MenuItems menuItems;
     private final Date date;
+    private final MenuItems menuItems;
 
-    public OrderElement(MenuItems menuItems, Date date) {
+    public OrderElement(Date date, MenuItems menuItems) {
         this.menuItems = menuItems;
         this.date = date;
     }
