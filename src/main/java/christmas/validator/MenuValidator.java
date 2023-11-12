@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import static christmas.domain.MenuItems.MIN_ORDER_COUNT;
+import static christmas.domain.menu.MenuItems.MIN_ORDER_COUNT;
 
 import christmas.domain.menu.Menu;
 import christmas.exception.IllegalMenusException;

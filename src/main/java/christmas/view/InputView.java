@@ -1,16 +1,16 @@
 package christmas.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static christmas.domain.Date.CURRENT_MONTH;
-import static christmas.domain.MenuItems.DELIMITER;
+import static christmas.domain.date.Date.CURRENT_MONTH;
+import static christmas.domain.menu.MenuItems.DELIMITER;
 import static christmas.util.FunctionalInterfaces.retryIfFailure;
 import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.DateValidator.validateInputDate;
 import static christmas.validator.MenusValidator.validateInputOrderMenus;
 
-import christmas.domain.Date;
-import christmas.domain.MenuItem;
-import christmas.domain.MenuItems;
+import christmas.domain.date.Date;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuItems;
 import christmas.domain.order.Order;
 import java.util.ArrayList;
 import java.util.List;

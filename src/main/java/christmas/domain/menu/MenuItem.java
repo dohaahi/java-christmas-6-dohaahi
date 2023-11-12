@@ -1,10 +1,8 @@
-package christmas.domain;
+package christmas.domain.menu;
 
 import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.MenuValidator.validateOrderMenu;
 
-import christmas.domain.menu.Menu;
-import christmas.domain.menu.MenuCategory;
 import java.util.List;
 
 public class MenuItem {

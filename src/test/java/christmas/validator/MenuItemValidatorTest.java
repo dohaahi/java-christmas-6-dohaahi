@@ -1,9 +1,9 @@
 package christmas.validator;
 
-import static christmas.domain.MenuItems.MIN_ORDER_COUNT;
+import static christmas.domain.menu.MenuItems.MIN_ORDER_COUNT;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import christmas.domain.MenuItems;
+import christmas.domain.menu.MenuItems;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

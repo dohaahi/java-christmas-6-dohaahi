@@ -3,8 +3,8 @@ package christmas.domain.promotion;
 import static christmas.domain.promotion.WeekdayPromotion.WEEKDAY_DISCOUNT_AMOUNT;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.Date;
-import christmas.domain.MenuItems;
+import christmas.domain.date.Date;
+import christmas.domain.menu.MenuItems;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

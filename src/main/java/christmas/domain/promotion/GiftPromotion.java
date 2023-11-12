@@ -1,8 +1,8 @@
 package christmas.domain.promotion;
 
-import christmas.domain.Date;
-import christmas.domain.MenuItems;
+import christmas.domain.date.Date;
 import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuItems;
 
 public class GiftPromotion implements Promotion {
     private static final int MIN_ORDER_AMOUNT = 120_000;

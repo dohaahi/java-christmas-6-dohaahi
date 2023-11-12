@@ -1,7 +1,7 @@
 package christmas.domain.promotion;
 
-import christmas.domain.Date;
-import christmas.domain.MenuItems;
+import christmas.domain.date.Date;
+import christmas.domain.menu.MenuItems;
 
 public class ChristmasPromotion implements Promotion {
     public static final int CHRISTMAS_DATE = 25;

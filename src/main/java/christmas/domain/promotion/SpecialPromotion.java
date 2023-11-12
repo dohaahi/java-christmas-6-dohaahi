@@ -2,8 +2,8 @@ package christmas.domain.promotion;
 
 import static christmas.domain.promotion.ChristmasPromotion.CHRISTMAS_DATE;
 
-import christmas.domain.Date;
-import christmas.domain.MenuItems;
+import christmas.domain.date.Date;
+import christmas.domain.menu.MenuItems;
 import java.time.DayOfWeek;
 
 public class SpecialPromotion implements Promotion {

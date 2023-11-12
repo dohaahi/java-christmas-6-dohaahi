@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.domain.MenuItem;
+import christmas.domain.menu.MenuItem;
 import christmas.exception.IllegalInputException;
 import java.util.List;
 import java.util.regex.Pattern;

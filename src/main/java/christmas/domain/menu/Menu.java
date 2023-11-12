@@ -1,6 +1,5 @@
 package christmas.domain.menu;
 
-import christmas.domain.MenuItem;
 import christmas.exception.IllegalMenusException;
 import java.util.List;
 

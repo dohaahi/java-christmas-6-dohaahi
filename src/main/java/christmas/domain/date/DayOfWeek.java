@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.date;
 
 public enum DayOfWeek {
     SUNDAY("일요일"),

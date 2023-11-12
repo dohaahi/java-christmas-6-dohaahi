@@ -1,13 +1,14 @@
 package christmas.validator;
 
-import static christmas.domain.MenuItems.MAX_ORDER_COUNT;
+import static christmas.domain.menu.MenuItems.MAX_ORDER_COUNT;
 import static christmas.util.StringConverter.delimiterStringToList;
 import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
 import static christmas.validator.InputValidator.validateValueEmpty;
 
-import christmas.domain.MenuItem;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.menu.MenuItems;
 import christmas.exception.IllegalMenusException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,7 +17,7 @@ import java.util.List;
 public class MenusValidator {
     public static void validateInputOrderMenus(final String input) {
         validateValueEmpty(input);
-        List<String> orderMenus = delimiterStringToList(christmas.domain.MenuItems.DELIMITER, input);
+        List<String> orderMenus = delimiterStringToList(MenuItems.DELIMITER, input);
 
         if (orderMenus.size() == 1) {
             validateOrderMenuMatchedMenuOrderRegex(input);
