@@ -3,6 +3,7 @@ package christmas.domain.promotion;
 import christmas.domain.date.Date;
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItems;
+import christmas.domain.order.OrderElement;
 import java.time.DayOfWeek;
 import java.util.List;
 
@@ -13,7 +14,10 @@ public class PeriodPromotion implements Promotion {
     public static final int WEEKEND_DISCOUNT_AMOUNT = 2_023;
 
     @Override
-    public int discountAmount(MenuItems menuItems, Date date) {
+    public int discountAmount(final OrderElement element) {
+        MenuItems menuItems = element.getMenuItems();
+        Date date = element.getDate();
+
         if (isWeekend(date)) {
             return weekendDiscountAmount(menuItems, date);
         }

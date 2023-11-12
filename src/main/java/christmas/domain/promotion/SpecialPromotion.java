@@ -3,14 +3,16 @@ package christmas.domain.promotion;
 import static christmas.domain.promotion.ChristmasPromotion.CHRISTMAS_DATE;
 
 import christmas.domain.date.Date;
-import christmas.domain.menu.MenuItems;
+import christmas.domain.order.OrderElement;
 import java.time.DayOfWeek;
 
 public class SpecialPromotion implements Promotion {
     public static final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
 
     @Override
-    public int discountAmount(MenuItems menuItems, Date date) {
+    public int discountAmount(final OrderElement element) {
+        Date date = element.getDate();
+
         if (!isValidSpecialDiscountPeriod(date)) {
             return NO_DISCOUNT;
         }
