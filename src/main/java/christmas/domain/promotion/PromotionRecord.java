@@ -2,15 +2,15 @@ package christmas.domain.promotion;
 
 import java.util.List;
 
-public class DiscountRecord {
+public class PromotionRecord {
     private final int christmasPromotionDiscountAmount;
     private final int periodPromotionDiscountAmount;
     private final int specialPromotionDiscountAmount;
     private final int giftPromotionDiscountAmount;
     private final int totalDiscountAmount;
 
-    public DiscountRecord(int christmasPromotionDiscountAmount, int periodPromotionDiscountAmount,
-                          int specialPromotionDiscountAmount, int giftPromotionDiscountAmount
+    public PromotionRecord(int christmasPromotionDiscountAmount, int periodPromotionDiscountAmount,
+                           int specialPromotionDiscountAmount, int giftPromotionDiscountAmount
     ) {
         this.christmasPromotionDiscountAmount = christmasPromotionDiscountAmount;
         this.periodPromotionDiscountAmount = periodPromotionDiscountAmount;
