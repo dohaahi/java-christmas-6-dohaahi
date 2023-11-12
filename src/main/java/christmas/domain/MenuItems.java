@@ -5,7 +5,6 @@ import static christmas.validator.MenusValidator.validateOrderMenus;
 import christmas.domain.menu.Menu;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class MenuItems {
     public static final String DELIMITER = ", ";
@@ -22,9 +21,9 @@ public class MenuItems {
     public int getTotalPrice() {
         int totalPrice = 0;
 
-        for (Entry<Menu, Integer> menu : menus.entrySet()) {
-            totalPrice += menu.getKey().getPrice() * menu.getValue();
-        }
+        menuItems.stream()
+                .mapToInt(menuItem -> menuItem.getCount() * menuItem.getPrice())
+                .sum();
 
         return totalPrice;
     }
