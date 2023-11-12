@@ -3,7 +3,6 @@ package christmas.domain.menu;
 import christmas.domain.MenuItem;
 import christmas.exception.IllegalMenusException;
 import java.util.List;
-import java.util.Optional;
 
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, MenuCategory.APPETIZER),
@@ -30,28 +29,16 @@ public enum Menu {
         this.category = category;
     }
 
-    public static boolean isMatchMenu(final String menuName) {
-        return MENUS.stream()
-                .anyMatch(menuItem -> menuName.equals(menuItem.name));
-    }
-
-    public static Menu getMenuItem(final MenuItem menuItem) {
-        Optional<Menu> findMenu = MENUS.stream()
-                .filter(menuItem -> menuItem.name.equals(menuItem.getName()))
-                .findFirst();
-
-        if (findMenu.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_ORDER_MENU_MESSAGE.getMessage());
-        }
-
-        return findMenu.get();
-    }
-
     public static Menu from(final String name) {
         return MENUS.stream()
                 .filter(menu -> menu.name.equals(name))
                 .findFirst()
                 .orElseThrow(IllegalMenusException::new);
+    }
+
+    public static boolean isMatchMenu(final String menuName) {
+        return MENUS.stream()
+                .anyMatch(menuItem -> menuName.equals(menuItem.name));
     }
 
     public int getPrice() {
