@@ -2,9 +2,8 @@ package christmas.domain;
 
 import static christmas.validator.DateValidator.validateDate;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class Date {
     public static final int CURRENT_MONTH = 12;
@@ -17,10 +16,9 @@ public class Date {
         this.day = day;
     }
 
-    public String getDayOfWeek() {
+    public DayOfWeek getDayOfWeek() {
         return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, day)
-                .getDayOfWeek()
-                .getDisplayName(TextStyle.FULL, Locale.US);
+                .getDayOfWeek();
     }
 
     public int getDay() {
