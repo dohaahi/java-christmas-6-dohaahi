@@ -17,8 +17,15 @@ public class Date {
     }
 
     public DayOfWeek getDayOfWeek() {
-        return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, day)
-                .getDayOfWeek();
+        return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, day).getDayOfWeek();
+    }
+
+    public boolean isMatch(final int day) {
+        return this.day == day;
+    }
+
+    public boolean isPassed(final int day) {
+        return this.day > day;
     }
 
     public int getDay() {

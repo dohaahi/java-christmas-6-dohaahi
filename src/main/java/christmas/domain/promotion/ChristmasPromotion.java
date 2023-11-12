@@ -10,7 +10,7 @@ public class ChristmasPromotion implements Promotion {
 
     @Override
     public int discountAmount(final MenuItems menuItems, final Date date) {
-        if (date.getDay() > CHRISTMAS_DATE) {
+        if (date.isPassed(CHRISTMAS_DATE)) {
             return NO_DISCOUNT;
         }
 
