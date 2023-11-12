@@ -7,24 +7,28 @@ import java.util.List;
 
 public class PromotionProcessor {
     private final OrderElement orderElement;
+    private final Promotion christmasPromotion = new ChristmasPromotion();
+    private final Promotion periodPromotion = new PeriodPromotion();
+    private final Promotion specialPromotion = new SpecialPromotion();
+    private final Promotion giftPromotion = new GiftPromotion();
     private final List<Promotion> promotions = List.of(
-            new ChristmasPromotion(),
-            new PeriodPromotion(),
-            new SpecialPromotion(),
-            new GiftPromotion()
+            christmasPromotion,
+            periodPromotion,
+            specialPromotion,
+            giftPromotion
     );
 
-    public PromotionProcessor(final MenuItems menuItems, final Date date) {
-        this.orderElement = new OrderElement(menuItems, date);
+    public PromotionProcessor(final Date date, final MenuItems menuItems) {
+        this.orderElement = new OrderElement(date, menuItems);
     }
 
-    public void discount() {
-        final int christmasPromotionDiscountAmount = getDiscountAmountFrom(new ChristmasPromotion());
-        final int periodPromotionDiscountAmount = getDiscountAmountFrom(new PeriodPromotion());
-        final int specialPromotionDiscountAmount = getDiscountAmountFrom(new SpecialPromotion());
-        final int giftPromotionDiscountAmount = getDiscountAmountFrom(new GiftPromotion());
+    public PromotionRecord discount() {
+        final int christmasPromotionDiscountAmount = getDiscountAmountFrom(christmasPromotion);
+        final int periodPromotionDiscountAmount = getDiscountAmountFrom(periodPromotion);
+        final int specialPromotionDiscountAmount = getDiscountAmountFrom(specialPromotion);
+        final int giftPromotionDiscountAmount = getDiscountAmountFrom(giftPromotion);
 
-        final DiscountRecord discountRecord = new DiscountRecord(
+        return new PromotionRecord(
                 christmasPromotionDiscountAmount,
                 periodPromotionDiscountAmount,
                 specialPromotionDiscountAmount,
