@@ -27,12 +27,12 @@ public class MenuItem {
         return new MenuItem(orderMenu);
     }
 
-    public String getName() {
-        return menu.name();
+    public boolean isMatch(final MenuCategory menuCategory) {
+        return menu.getCategory().equals(menuCategory);
     }
 
-    public MenuCategory getCategory() {
-        return menu.getCategory();
+    public String getName() {
+        return menu.name();
     }
 
     public int getCount() {

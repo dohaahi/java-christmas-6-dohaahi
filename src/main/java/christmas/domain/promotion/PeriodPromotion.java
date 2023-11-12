@@ -29,13 +29,13 @@ public class PeriodPromotion implements Promotion {
 
     private int weekendDiscountAmount(final MenuItems menuItems, final Date date) {
         return (int) menuItems.getMenuItems().stream()
-                .filter(menuItem -> WEEKEND_DISCOUNT_CATEGORY.equals(menuItem.getCategory()))
+                .filter(menuItem -> menuItem.isMatch(WEEKEND_DISCOUNT_CATEGORY))
                 .count() * WEEKEND_DISCOUNT_AMOUNT;
     }
 
     private int weekdayDiscountAmount(final MenuItems menuItems, final Date date) {
         return (int) menuItems.getMenuItems().stream()
-                .filter(menuItem -> WEEKDAY_DISCOUNT_CATEGORY.equals(menuItem.getCategory()))
+                .filter(menuItem -> menuItem.isMatch(WEEKDAY_DISCOUNT_CATEGORY))
                 .count() * WEEKDAY_DISCOUNT_AMOUNT;
     }
 }
