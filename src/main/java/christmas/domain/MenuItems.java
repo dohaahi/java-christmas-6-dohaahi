@@ -2,17 +2,19 @@ package christmas.domain;
 
 import static christmas.validator.MenusValidator.validateOrderMenus;
 
+import christmas.domain.menu.MenuCategory;
 import java.util.List;
 
 public class MenuItems {
     public static final String DELIMITER = ", ";
     public static final int MIN_ORDER_COUNT = 1;
     public static final int MAX_ORDER_COUNT = 20;
+    public static final MenuCategory SINGLE_ORDER_EXCEPTION_CATEGORY = MenuCategory.DRINK;
 
     private final List<MenuItem> menuItems;
 
     public MenuItems(final List<MenuItem> menuItems) {
-        validateOrderMenus(menuItems);
+        validateOrderMenus(menuItems, SINGLE_ORDER_EXCEPTION_CATEGORY);
         this.menuItems = menuItems;
     }
 
