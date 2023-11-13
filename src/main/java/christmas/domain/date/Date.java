@@ -4,6 +4,7 @@ import static christmas.validator.DateValidator.validateDate;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Date {
     public static final int CURRENT_MONTH = 12;
@@ -16,6 +17,12 @@ public class Date {
         validateDate(day);
 
         this.day = day;
+    }
+
+    public static boolean isWeekend(final Date date) {
+        final List<DayOfWeek> weekend = List.of(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
+
+        return weekend.contains(date.getDayOfWeek());
     }
 
     public DayOfWeek getDayOfWeek() {

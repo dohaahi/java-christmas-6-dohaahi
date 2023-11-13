@@ -1,11 +1,11 @@
 package christmas.domain.promotion;
 
+import static christmas.domain.date.Date.isWeekend;
+
 import christmas.domain.date.Date;
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItems;
 import christmas.domain.order.OrderElement;
-import java.time.DayOfWeek;
-import java.util.List;
 
 public class PeriodPromotion implements Promotion {
     public static final MenuCategory WEEKDAY_DISCOUNT_CATEGORY = MenuCategory.DESSERT;
@@ -23,12 +23,6 @@ public class PeriodPromotion implements Promotion {
         }
 
         return weekdayDiscountAmount(menuItems, date);
-    }
-
-    private boolean isWeekend(final Date date) {
-        final List<DayOfWeek> weekend = List.of(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
-
-        return weekend.contains(date.getDayOfWeek());
     }
 
     private int weekendDiscountAmount(final MenuItems menuItems, final Date date) {
