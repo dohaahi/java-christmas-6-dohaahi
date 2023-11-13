@@ -19,19 +19,19 @@ public class PeriodPromotion implements Promotion {
         final Date date = element.getDate();
 
         if (isWeekend(date)) {
-            return weekendDiscountAmount(menuItems, date);
+            return weekendDiscountAmount(menuItems);
         }
 
-        return weekdayDiscountAmount(menuItems, date);
+        return weekdayDiscountAmount(menuItems);
     }
 
-    private int weekendDiscountAmount(final MenuItems menuItems, final Date date) {
+    private int weekendDiscountAmount(final MenuItems menuItems) {
         return (int) menuItems.getMenuItems().stream()
                 .filter(menuItem -> menuItem.isMatch(WEEKEND_DISCOUNT_CATEGORY))
                 .count() * WEEKEND_DISCOUNT_AMOUNT;
     }
 
-    private int weekdayDiscountAmount(final MenuItems menuItems, final Date date) {
+    private int weekdayDiscountAmount(final MenuItems menuItems) {
         return (int) menuItems.getMenuItems().stream()
                 .filter(menuItem -> menuItem.isMatch(WEEKDAY_DISCOUNT_CATEGORY))
                 .count() * WEEKDAY_DISCOUNT_AMOUNT;
