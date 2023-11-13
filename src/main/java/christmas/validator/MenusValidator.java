@@ -9,7 +9,7 @@ import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItem;
 import christmas.domain.menu.MenuItems;
-import christmas.exception.IllegalMenusException;
+import christmas.exception.IllegalMenuException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -40,7 +40,7 @@ public class MenusValidator {
         long count = new HashSet<>(menuNames).size();
 
         if (count != menuNames.size()) {
-            throw new IllegalMenusException();
+            throw new IllegalMenuException();
         }
     }
 
@@ -49,7 +49,7 @@ public class MenusValidator {
         final List<MenuCategory> menuCategories = menuCategories(menuItems);
 
         if (isSingleOrderExceptionCategory(menuCategories, menuCategory)) {
-            throw new IllegalMenusException();
+            throw new IllegalMenuException();
         }
     }
 
@@ -69,7 +69,7 @@ public class MenusValidator {
         int totalCount = menuItems.stream().mapToInt(MenuItem::getCount).sum();
 
         if (totalCount > MAX_ORDER_COUNT) {
-            throw new IllegalMenusException();
+            throw new IllegalMenuException();
         }
     }
 }

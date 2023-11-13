@@ -1,6 +1,6 @@
 package christmas.domain.menu;
 
-import christmas.exception.IllegalMenusException;
+import christmas.exception.IllegalMenuException;
 import java.util.List;
 
 public enum Menu {
@@ -32,7 +32,7 @@ public enum Menu {
         return MENUS.stream()
                 .filter(menu -> menu.name.equals(name))
                 .findFirst()
-                .orElseThrow(IllegalMenusException::new);
+                .orElseThrow(IllegalMenuException::new);
     }
 
     public static boolean isMatchMenu(final String menuName) {
