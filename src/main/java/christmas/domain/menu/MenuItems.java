@@ -5,7 +5,7 @@ import static christmas.validator.MenusValidator.validateOrderMenus;
 import java.util.List;
 
 public class MenuItems {
-    public static final String DELIMITER = ", ";
+    public static final String DELIMITER = ",";
     public static final int MIN_ORDER_COUNT = 1;
     public static final int MAX_ORDER_COUNT = 20;
     public static final MenuCategory SINGLE_ORDER_EXCEPTION_CATEGORY = MenuCategory.DRINK;
