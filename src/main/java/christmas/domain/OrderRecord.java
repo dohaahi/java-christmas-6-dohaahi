@@ -1,8 +1,8 @@
 package christmas.domain;
 
-import christmas.domain.badge.BadgePromotion;
-import christmas.domain.order.Order;
-import christmas.domain.promotion.PromotionRecord;
+import christmas.domain.dto.BadgePromotionDto;
+import christmas.domain.dto.OrderDto;
+import christmas.domain.dto.PromotionRecordDto;
 
-public record OrderRecord(Order order, PromotionRecord promotionRecord, BadgePromotion badgePromotion) {
+public record OrderRecord(OrderDto order, PromotionRecordDto promotionRecord, BadgePromotionDto badgePromotion) {
 }
