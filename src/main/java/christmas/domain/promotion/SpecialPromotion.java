@@ -11,7 +11,7 @@ public class SpecialPromotion implements Promotion {
 
     @Override
     public int discountAmount(final OrderElement element) {
-        Date date = element.getDate();
+        final Date date = element.getDate();
 
         if (!isValidSpecialDiscountPeriod(date)) {
             return NO_DISCOUNT;

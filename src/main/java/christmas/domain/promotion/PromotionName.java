@@ -8,7 +8,7 @@ public enum PromotionName {
     GIFT_PROMOTION("증정 이벤트");
     private final String name;
 
-    PromotionName(String name) {
+    PromotionName(final String name) {
         this.name = name;
     }
 

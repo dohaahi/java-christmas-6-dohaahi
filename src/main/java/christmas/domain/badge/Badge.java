@@ -8,7 +8,7 @@ public enum Badge {
     private final String name;
     private final int minPrice;
 
-    Badge(String name, int minPrice) {
+    Badge(final String name, final int minPrice) {
         this.name = name;
         this.minPrice = minPrice;
     }

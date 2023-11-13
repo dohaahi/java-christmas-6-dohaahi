@@ -13,7 +13,7 @@ public enum OrderRecordMessage {
 
     private final String message;
 
-    OrderRecordMessage(String message) {
+    OrderRecordMessage(final String message) {
         this.message = message;
     }
 

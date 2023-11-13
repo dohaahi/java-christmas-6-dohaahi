@@ -13,7 +13,7 @@ public class Date {
     private static final int CURRENT_YEAR = 2023;
     private final int day;
 
-    public Date(int day) {
+    public Date(final int day) {
         validateDate(day);
 
         this.day = day;

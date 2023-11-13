@@ -10,7 +10,7 @@ public class BadgePromotion {
     }
 
     public Badge matchBadgeFrom(final PromotionRecord promotionRecord) {
-        int totalDiscountAmount = promotionRecord.getTotalDiscountAmount();
+        final int totalDiscountAmount = promotionRecord.getTotalDiscountAmount();
 
         if (totalDiscountAmount > Badge.SANTA.getMinPrice()) {
             return Badge.STAR;

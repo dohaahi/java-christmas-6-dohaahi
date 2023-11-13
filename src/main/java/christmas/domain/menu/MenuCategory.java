@@ -7,7 +7,7 @@ public enum MenuCategory {
     DRINK("음료");
     private final String categoryName;
 
-    MenuCategory(String categoryName) {
+    MenuCategory(final String categoryName) {
         this.categoryName = categoryName;
     }
 }

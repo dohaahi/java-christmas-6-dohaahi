@@ -46,7 +46,7 @@ public class OutputView {
     private void printOrderMenus(final OrderRecord orderRecord) {
         System.out.print(ORDER_MENU.getMessage());
 
-        List<MenuItem> menuItems = orderRecord.order().menus().getMenuItems();
+        final List<MenuItem> menuItems = orderRecord.order().menus().getMenuItems();
 
         for (int count = 0; count < menuItems.size() - 1; count++) {
             System.out.printf(PRINT_MENU_FORMAT + "\n", menuItems.get(count).getName(),
@@ -65,7 +65,7 @@ public class OutputView {
     private void printGift(final OrderRecord orderRecord) {
         System.out.print(OrderRecordMessage.GIFT_MENU.getMessage());
 
-        boolean giftPresent = GiftPromotion.isGiftPresent(orderRecord.promotionRecord().totalDiscountAmount());
+        final boolean giftPresent = GiftPromotion.isGiftPresent(orderRecord.promotionRecord().totalDiscountAmount());
         if (giftPresent) {
             System.out.printf(PRINT_MENU_FORMAT + "\n", GIFT_MENU, GIFT_COUNT);
         }
@@ -82,7 +82,7 @@ public class OutputView {
             return;
         }
 
-        PromotionRecordDto promotion = orderRecord.promotionRecord();
+        final PromotionRecordDto promotion = orderRecord.promotionRecord();
         System.out.printf(PROMOTION_RECORD_FORMAT + "\n", PromotionName.CHRISTMAS_PROMOTION.getName(),
                 decimalFormat(promotion.christmasPromotionDiscountAmount()));
 
@@ -133,7 +133,7 @@ public class OutputView {
     }
 
     private String decimalFormat(final int price) {
-        DecimalFormat decimalFormat = new DecimalFormat(MONEY_FORMAT);
+        final DecimalFormat decimalFormat = new DecimalFormat(MONEY_FORMAT);
         return decimalFormat.format(price);
     }
 }

@@ -10,7 +10,7 @@ public class MenuItem {
     private final Menu menu;
     private final int count;
 
-    private MenuItem(String orderMenu) {
+    private MenuItem(final String orderMenu) {
         validateOrderMenu(orderMenu);
         List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
 

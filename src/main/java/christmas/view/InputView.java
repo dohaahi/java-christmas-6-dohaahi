@@ -23,13 +23,14 @@ public class InputView {
     public Order readOrder() {
         System.out.print(GREETING_MESSAGE);
 
-        Date date = retryIfFailure(this::readVisitDate);
-        MenuItems menus = retryIfFailure(this::readOrderMenus);
+        final Date date = retryIfFailure(this::readVisitDate);
+        final MenuItems menus = retryIfFailure(this::readOrderMenus);
         return new Order(date, menus);
     }
 
     private Date readVisitDate() {
         System.out.print(EXPECTED_VISIT_DATE_MESSAGE);
+
         final String input = readLine().trim();
         validateInputDate(input);
 
@@ -38,17 +39,18 @@ public class InputView {
 
     private MenuItems readOrderMenus() {
         System.out.print(ORDER_MENU_MESSAGE);
+
         final String input = readLine().trim();
         validateInputOrderMenus(input);
 
-        List<String> orderMenus = delimiterStringToList(DELIMITER, input);
-        List<MenuItem> menuItems = retryIfFailure(() -> converterStringToMenu(orderMenus));
+        final List<String> orderMenus = delimiterStringToList(DELIMITER, input);
+        final List<MenuItem> menuItems = retryIfFailure(() -> converterStringToMenu(orderMenus));
 
         return new MenuItems(menuItems);
     }
 
-    private List<MenuItem> converterStringToMenu(List<String> orderMenus) {
-        List<MenuItem> menuItems = new ArrayList<>();
+    private List<MenuItem> converterStringToMenu(final List<String> orderMenus) {
+        final List<MenuItem> menuItems = new ArrayList<>();
 
         orderMenus.forEach(orderMenu -> {
             MenuItem menuItem = MenuItem.from(orderMenu);

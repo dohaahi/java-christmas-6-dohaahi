@@ -6,9 +6,9 @@ import christmas.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        EventPlanner promotionController = new EventPlanner(inputView, outputView);
+        final InputView inputView = new InputView();
+        final OutputView outputView = new OutputView();
+        final EventPlanner promotionController = new EventPlanner(inputView, outputView);
 
         promotionController.preview();
     }

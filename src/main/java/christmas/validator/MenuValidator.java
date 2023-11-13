@@ -16,7 +16,7 @@ public class MenuValidator {
     public static void validateOrderMenu(final String orderMenu) {
         validateOrderMenuMatchedMenuOrderRegex(orderMenu);
 
-        List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
+        final List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
 
         validateMinOrderCount(menu);
         validateMatchMenuItem(menu);
@@ -29,7 +29,7 @@ public class MenuValidator {
     }
 
     private static void validateMinOrderCount(final List<String> menu) {
-        int menuCount = Integer.parseInt(menu.get(1));
+        final int menuCount = Integer.parseInt(menu.get(1));
 
         if (menuCount < MIN_ORDER_COUNT) {
             throw new IllegalMenuException();
@@ -37,7 +37,7 @@ public class MenuValidator {
     }
 
     private static void validateMatchMenuItem(final List<String> menu) {
-        String menuName = menu.get(0);
+        final String menuName = menu.get(0);
 
         if (!Menu.isMatchMenu(menuName)) {
             throw new IllegalMenuException();

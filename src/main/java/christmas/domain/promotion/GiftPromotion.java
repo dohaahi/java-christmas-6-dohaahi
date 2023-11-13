@@ -15,7 +15,7 @@ public class GiftPromotion implements Promotion {
 
     @Override
     public int discountAmount(final OrderElement element) {
-        MenuItems menuItems = element.getMenuItems();
+        final MenuItems menuItems = element.getMenuItems();
 
         if (menuItems.isLessThan(MIN_ORDER_AMOUNT)) {
             return NO_DISCOUNT;

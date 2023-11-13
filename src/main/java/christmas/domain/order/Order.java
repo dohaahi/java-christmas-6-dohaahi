@@ -10,7 +10,7 @@ public class Order {
     private final MenuItems menus;
     private final PromotionProcessor promotionProcessor;
 
-    public Order(Date date, MenuItems menus) {
+    public Order(final Date date, final MenuItems menus) {
         this.date = date;
         this.menus = menus;
 

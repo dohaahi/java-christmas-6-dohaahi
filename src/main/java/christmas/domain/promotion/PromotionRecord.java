@@ -9,8 +9,8 @@ public class PromotionRecord {
     private final int giftPromotionDiscountAmount;
     private final int totalDiscountAmount;
 
-    public PromotionRecord(int christmasPromotionDiscountAmount, int periodPromotionDiscountAmount,
-                           int specialPromotionDiscountAmount, int giftPromotionDiscountAmount
+    public PromotionRecord(final int christmasPromotionDiscountAmount, final int periodPromotionDiscountAmount,
+                           final int specialPromotionDiscountAmount, final int giftPromotionDiscountAmount
     ) {
         this.christmasPromotionDiscountAmount = christmasPromotionDiscountAmount;
         this.periodPromotionDiscountAmount = periodPromotionDiscountAmount;

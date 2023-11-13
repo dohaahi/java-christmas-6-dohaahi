@@ -15,8 +15,8 @@ public class PeriodPromotion implements Promotion {
 
     @Override
     public int discountAmount(final OrderElement element) {
-        MenuItems menuItems = element.getMenuItems();
-        Date date = element.getDate();
+        final MenuItems menuItems = element.getMenuItems();
+        final Date date = element.getDate();
 
         if (isWeekend(date)) {
             return weekendDiscountAmount(menuItems, date);

@@ -7,7 +7,7 @@ public class OrderElement {
     private final Date date;
     private final MenuItems menuItems;
 
-    public OrderElement(Date date, MenuItems menuItems) {
+    public OrderElement(final Date date, final MenuItems menuItems) {
         this.menuItems = menuItems;
         this.date = date;
     }

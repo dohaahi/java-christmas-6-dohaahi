@@ -76,7 +76,7 @@ public class MenusValidator {
     }
 
     private static void validateMaxOrderCount(final List<MenuItem> menuItems) {
-        int totalCount = menuItems.stream().mapToInt(MenuItem::getCount).sum();
+        final int totalCount = menuItems.stream().mapToInt(MenuItem::getCount).sum();
 
         if (totalCount > MAX_ORDER_COUNT) {
             throw new IllegalMenuException();
