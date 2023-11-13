@@ -3,14 +3,16 @@ package christmas.validator;
 import static christmas.domain.menu.MenuItem.DELIMITER;
 import static christmas.domain.menu.MenuItems.MIN_ORDER_COUNT;
 import static christmas.util.StringConverter.delimiterStringToList;
-import static christmas.validator.InputValidator.ORDER_MENU_REGEX;
 
 import christmas.domain.menu.Menu;
+import christmas.domain.menu.MenuItem;
 import christmas.exception.IllegalMenuException;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class MenuValidator {
+    public static final String ORDER_MENU_REGEX = "^[가-힣]+" + MenuItem.DELIMITER + "[1-9]\\d*$";
+
     public static void validateOrderMenu(final String orderMenu) {
         validateOrderMenuMatchedMenuOrderRegex(orderMenu);
 
