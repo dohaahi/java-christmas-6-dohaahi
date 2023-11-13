@@ -40,4 +40,8 @@ public class MenuItem {
     public int getPrice() {
         return menu.getPrice();
     }
+
+    public MenuCategory getCategory() {
+        return menu.getCategory();
+    }
 }
