@@ -20,4 +20,16 @@ public class Order {
     public PromotionRecord discount() {
         return promotionProcessor.discount();
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public MenuItems getMenus() {
+        return menus;
+    }
+
+    public PromotionProcessor getPromotionProcessor() {
+        return promotionProcessor;
+    }
 }
