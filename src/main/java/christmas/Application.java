@@ -10,6 +10,6 @@ public class Application {
         OutputView outputView = new OutputView();
         EventPlanner promotionController = new EventPlanner(inputView, outputView);
 
-        promotionController.makeReservation();
+        promotionController.preview();
     }
 }
