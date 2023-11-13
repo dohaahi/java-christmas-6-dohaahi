@@ -2,12 +2,13 @@ package christmas.validator;
 
 import static christmas.domain.date.Date.MAX_DATE_IN_MONTH;
 import static christmas.domain.date.Date.MIN_DATE_IN_MONTH;
-import static christmas.validator.InputValidator.NUMBER_REGEX;
 
 import christmas.exception.IllegalDateException;
 import java.util.regex.Pattern;
 
 public class DateValidator {
+    public static final String NUMBER_REGEX = "^[\\d]*$";
+
     public static void validateInputDate(final String input) {
         validateValueEmpty(input);
         validateDateMatchedNumberRegex(input);
