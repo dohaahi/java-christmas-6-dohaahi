@@ -4,6 +4,7 @@ import static christmas.domain.date.Date.isWeekend;
 
 import christmas.domain.date.Date;
 import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
 import christmas.domain.menu.MenuItems;
 import christmas.domain.order.OrderElement;
 
@@ -26,14 +27,18 @@ public class PeriodPromotion implements Promotion {
     }
 
     private int weekendDiscountAmount(final MenuItems menuItems) {
-        return (int) menuItems.getMenuItems().stream()
+        return (int) menuItems.getMenuItems()
+                .stream()
                 .filter(menuItem -> menuItem.isMatch(WEEKEND_DISCOUNT_CATEGORY))
-                .count() * WEEKEND_DISCOUNT_AMOUNT;
+                .mapToInt(MenuItem::getCount)
+                .sum() * WEEKEND_DISCOUNT_AMOUNT;
     }
 
     private int weekdayDiscountAmount(final MenuItems menuItems) {
-        return (int) menuItems.getMenuItems().stream()
+        return (int) menuItems.getMenuItems()
+                .stream()
                 .filter(menuItem -> menuItem.isMatch(WEEKDAY_DISCOUNT_CATEGORY))
-                .count() * WEEKDAY_DISCOUNT_AMOUNT;
+                .mapToInt(MenuItem::getCount)
+                .sum() * WEEKDAY_DISCOUNT_AMOUNT;
     }
 }
