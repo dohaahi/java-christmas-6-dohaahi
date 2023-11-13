@@ -43,7 +43,7 @@ public class PromotionRecord {
         return giftPromotionDiscountAmount;
     }
 
-    public int calculateDiscountAmount() {
+    public int getTotalDiscountAmount() {
         return totalDiscountAmount;
     }
 }
