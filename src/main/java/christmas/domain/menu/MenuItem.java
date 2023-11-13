@@ -30,7 +30,7 @@ public class MenuItem {
     }
 
     public String getName() {
-        return menu.name();
+        return menu.getName();
     }
 
     public int getCount() {
