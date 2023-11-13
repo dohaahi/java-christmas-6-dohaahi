@@ -11,8 +11,8 @@ public class MenuItem {
     private final int count;
 
     private MenuItem(String orderMenu) {
+        validateOrderMenu(orderMenu);
         List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
-        validateOrderMenu(menu);
 
         String name = menu.get(0);
         int count = Integer.parseInt(menu.get(1));
