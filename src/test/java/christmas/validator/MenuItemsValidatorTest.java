@@ -34,7 +34,7 @@ public class MenuItemsValidatorTest {
         void Input_Valid_Menu_Format() {
             // given
             String input1 = "시저샐러드-1";
-            String input2 = "시저샐러드-1, 티본스테이크-1, 크리스마스파스타-1, 제로콜라-3, 아이스크림-1";
+            String input2 = "시저샐러드-1,티본스테이크-1,크리스마스파스타-1,제로콜라-3,아이스크림-1";
 
             // when
             // then
