@@ -11,7 +11,7 @@ import static christmas.view.OrderRecordMessage.PROMOTION_RECORD;
 import static christmas.view.OrderRecordMessage.TOTAL_PRICE_BEFORE_PROMOTION;
 import static christmas.view.OrderRecordMessage.TOTAL_PROMOTION_PRICE;
 
-import christmas.domain.OrderRecord;
+import christmas.domain.dto.OrderRecord;
 import christmas.domain.dto.PromotionRecordDto;
 import christmas.domain.menu.MenuItem;
 import christmas.domain.promotion.GiftPromotion;

@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.OrderRecord;
+import christmas.domain.dto.OrderRecord;
 import christmas.domain.order.Order;
 import christmas.domain.promotion.PromotionRecord;
 import christmas.view.InputView;
