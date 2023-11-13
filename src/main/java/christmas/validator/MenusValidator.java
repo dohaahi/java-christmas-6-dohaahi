@@ -1,30 +1,40 @@
 package christmas.validator;
 
+import static christmas.domain.menu.MenuItems.DELIMITER;
 import static christmas.domain.menu.MenuItems.MAX_ORDER_COUNT;
 import static christmas.util.StringConverter.delimiterStringToList;
-import static christmas.validator.InputValidator.validateOrderMenuMatchedMenuOrderRegex;
-import static christmas.validator.InputValidator.validateValueEmpty;
+import static christmas.validator.MenuValidator.ORDER_MENU_REGEX;
 
-import christmas.domain.menu.Menu;
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItem;
-import christmas.domain.menu.MenuItems;
 import christmas.exception.IllegalMenuException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class MenusValidator {
     public static void validateInputOrderMenus(final String input) {
         validateValueEmpty(input);
-        List<String> orderMenus = delimiterStringToList(MenuItems.DELIMITER, input);
 
-        if (orderMenus.size() == 1) {
-            validateOrderMenuMatchedMenuOrderRegex(input);
-            return;
+        try {
+            List<String> orderMenus = delimiterStringToList(DELIMITER, input);
+            orderMenus.forEach(MenusValidator::validateOrderMenuMatchedMenuOrderRegex);
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalMenuException();
         }
+    }
 
-        orderMenus.forEach(InputValidator::validateOrderMenuMatchedMenuOrderRegex);
+    public static void validateValueEmpty(final String input) {
+        if (input.isEmpty()) {
+            throw new IllegalMenuException();
+        }
+    }
+
+    public static void validateOrderMenuMatchedMenuOrderRegex(final String input) {
+        if (!Pattern.matches(ORDER_MENU_REGEX, input)) {
+            throw new IllegalMenuException();
+        }
     }
 
     public static void validateOrderMenus(final List<MenuItem> menuItems, final MenuCategory menuCategory) {
@@ -55,7 +65,7 @@ public class MenusValidator {
 
     private static List<MenuCategory> menuCategories(final List<MenuItem> menuItems) {
         return menuItems.stream()
-                .map(menu -> Menu.from(menu.getName()).getCategory())
+                .map(MenuItem::getCategory)
                 .distinct()
                 .toList();
     }
