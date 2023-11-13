@@ -5,8 +5,8 @@ import christmas.domain.order.OrderElement;
 
 public class ChristmasPromotion implements Promotion {
     public static final int CHRISTMAS_DATE = 25;
-    private static final int DISCOUNT_AMOUNT_INIT = 1_000;
-    private static final int DAILY_DISCOUNT_AMOUNT = 100;
+    public static final int DISCOUNT_AMOUNT_INIT = 1_000;
+    public static final int DAILY_DISCOUNT_AMOUNT = 100;
 
     @Override
     public int discountAmount(final OrderElement element) {
