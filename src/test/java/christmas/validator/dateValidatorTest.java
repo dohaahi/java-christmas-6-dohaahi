@@ -1,11 +1,12 @@
 package christmas.validator;
 
-import static christmas.domain.promotion.MonthPromotion.MAX_DATE_IN_MONTH;
-import static christmas.domain.promotion.MonthPromotion.MIN_DATE_IN_MONTH;
+import static christmas.domain.date.Date.MAX_DATE_IN_MONTH;
+import static christmas.domain.date.Date.MIN_DATE_IN_MONTH;
 import static christmas.validator.DateValidator.validateDate;
 import static christmas.validator.DateValidator.validateInputDate;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.exception.IllegalDateException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,7 @@ class dateValidatorTest {
             // when
             // then
             assertThatThrownBy(() -> validateInputDate(input))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.ENTER_VALUE_MASSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
         }
 
         @DisplayName("숫자가 입력되면 검증 통과")
@@ -50,11 +50,9 @@ class dateValidatorTest {
             // when
             // then
             assertThatThrownBy(() -> validateInputDate(input1))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.INVALID_INPUT_NUMBER_MESSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
             assertThatThrownBy(() -> validateInputDate(input2))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.INVALID_INPUT_NUMBER_MESSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
         }
     }
 
@@ -80,25 +78,21 @@ class dateValidatorTest {
         @Test
         void Date_Not_In_Month() {
             // given
-            int date1 = 0;
-            int date2 = 32;
+            int date1 = MIN_DATE_IN_MONTH - 1;
+            int date2 = MAX_DATE_IN_MONTH + 1;
             int date3 = -1;
             int date4 = 100;
 
             // when
             // then
             assertThatThrownBy(() -> validateDate(date1))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
             assertThatThrownBy(() -> validateDate(date2))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
             assertThatThrownBy(() -> validateDate(date3))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
             assertThatThrownBy(() -> validateDate(date4))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.INVALID_INPUT_DATE_MESSAGE.getMessage());
+                    .isInstanceOf(IllegalDateException.class);
         }
     }
 }
