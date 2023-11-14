@@ -29,11 +29,15 @@ public enum Menu {
     }
 
     public static Menu from(final String name) {
-        return MENUS.stream().filter(menu -> menu.name.equals(name)).findFirst().orElseThrow(IllegalMenuException::new);
+        return MENUS.stream()
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .orElseThrow(IllegalMenuException::new);
     }
 
     public static boolean isMatchMenu(final String menuName) {
-        return MENUS.stream().anyMatch(menuItem -> menuName.equals(menuItem.name));
+        return MENUS.stream()
+                .anyMatch(menuItem -> menuName.equals(menuItem.name));
     }
 
     public String getName() {
