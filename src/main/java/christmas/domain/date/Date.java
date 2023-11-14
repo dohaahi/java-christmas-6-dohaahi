@@ -19,7 +19,7 @@ public class Date {
         this.day = day;
     }
 
-    public static boolean isWeekend(final Date date) {
+    public boolean isWeekend(final Date date) {
         final List<DayOfWeek> weekend = List.of(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
 
         return weekend.contains(date.getDayOfWeek());
