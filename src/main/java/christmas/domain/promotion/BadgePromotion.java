@@ -1,6 +1,4 @@
-package christmas.domain.badge;
-
-import christmas.domain.promotion.PromotionRecord;
+package christmas.domain.promotion;
 
 public class BadgePromotion {
     private final Badge badge;

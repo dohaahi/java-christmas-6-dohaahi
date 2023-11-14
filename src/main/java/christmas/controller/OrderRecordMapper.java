@@ -2,12 +2,12 @@ package christmas.controller;
 
 import static christmas.domain.promotion.GiftPromotion.GIFT_MENU;
 
-import christmas.domain.badge.BadgePromotion;
 import christmas.domain.dto.BadgePromotionDto;
 import christmas.domain.dto.OrderDto;
 import christmas.domain.dto.OrderRecord;
 import christmas.domain.dto.PromotionRecordDto;
 import christmas.domain.order.Order;
+import christmas.domain.promotion.BadgePromotion;
 import christmas.domain.promotion.GiftPromotion;
 import christmas.domain.promotion.PromotionRecord;
 
