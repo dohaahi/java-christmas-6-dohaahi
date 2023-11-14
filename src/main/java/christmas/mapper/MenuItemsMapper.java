@@ -5,12 +5,12 @@ import christmas.domain.menu.MenuItem;
 import christmas.domain.menu.MenuItems;
 import java.util.List;
 
-public class MapToMenuItems {
+public class MenuItemsMapper {
     public static List<MenuItemDto> mapToMenuItems(final MenuItems menuItems) {
         List<MenuItem> menus = menuItems.getMenuItems();
 
         return menus.stream()
-                .map(MapToMenuItems::toMenuItemDto)
+                .map(MenuItemsMapper::toMenuItemDto)
                 .toList();
     }
 

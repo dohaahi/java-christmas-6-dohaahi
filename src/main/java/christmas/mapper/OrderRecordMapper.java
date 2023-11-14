@@ -1,12 +1,12 @@
 package christmas.mapper;
 
-import static christmas.mapper.MapToBadge.mapToBadge;
-import static christmas.mapper.MapToDate.mapToDate;
-import static christmas.mapper.MapToGiftMenu.mapToGiftMenu;
-import static christmas.mapper.MapToMenuItems.mapToMenuItems;
-import static christmas.mapper.MapToPromotions.mapToPromotions;
-import static christmas.mapper.MapToTotalDiscountAmount.mapToTotalDiscountAmount;
-import static christmas.mapper.MapToTotalPrice.mapToTotalPrice;
+import static christmas.mapper.BadgeMapper.mapToBadge;
+import static christmas.mapper.DateMapper.mapToDate;
+import static christmas.mapper.GiftMenuMapper.mapToGiftMenu;
+import static christmas.mapper.MenuItemsMapper.mapToMenuItems;
+import static christmas.mapper.PromotionsMapper.mapToPromotions;
+import static christmas.mapper.TotalDiscountAmountMapper.mapToTotalDiscountAmount;
+import static christmas.mapper.TotalPriceMapper.mapToTotalPrice;
 
 import christmas.domain.date.Date;
 import christmas.domain.dto.OrderRecord;

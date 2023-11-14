@@ -5,7 +5,7 @@ import christmas.domain.promotion.Promotion;
 import christmas.domain.promotion.PromotionProcessor;
 import java.util.List;
 
-public class MapToPromotions {
+public class PromotionsMapper {
     public static List<PromotionDto> mapToPromotions(final PromotionProcessor promotionProcessor) {
 
         List<Promotion> promotions = promotionProcessor.getPromotions();
