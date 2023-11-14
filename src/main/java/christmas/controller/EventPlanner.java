@@ -1,5 +1,7 @@
 package christmas.controller;
 
+import static christmas.util.FunctionalInterfaces.restartIfFailure;
+
 import christmas.domain.dto.OrderRecord;
 import christmas.domain.order.Order;
 import christmas.view.InputView;
@@ -15,7 +17,7 @@ public class EventPlanner {
     }
 
     public void preview() {
-        final Order order = inputView.readOrder();
+        final Order order = restartIfFailure(inputView::readOrder);
 
         final OrderRecord orderRecord = order.discount();
 
