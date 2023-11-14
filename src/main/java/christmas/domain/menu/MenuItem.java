@@ -12,10 +12,10 @@ public class MenuItem {
 
     private MenuItem(final String orderMenu) {
         validateOrderMenu(orderMenu);
-        List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
+        final List<String> menu = delimiterStringToList(DELIMITER, orderMenu);
 
-        String name = menu.get(0);
-        int count = Integer.parseInt(menu.get(1));
+        final String name = menu.get(0);
+        final int count = Integer.parseInt(menu.get(1));
 
         this.menu = Menu.from(name);
         this.count = count;

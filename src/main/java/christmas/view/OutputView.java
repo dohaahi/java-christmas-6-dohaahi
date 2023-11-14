@@ -43,7 +43,7 @@ public class OutputView {
     private void printOrderMenus(final OrderRecord orderRecord) {
         System.out.print(ORDER_MENU.getMessage());
 
-        List<MenuItemDto> menuItems = orderRecord.menuItemDtos();
+        final List<MenuItemDto> menuItems = orderRecord.menuItemDtos();
 
         for (int count = 0; count < menuItems.size() - 1; count++) {
             System.out.printf(PRINT_MENU_FORMAT + "\n", menuItems.get(count).name(),

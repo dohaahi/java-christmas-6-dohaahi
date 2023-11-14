@@ -9,15 +9,15 @@ public class EventPlanner {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public EventPlanner(InputView inputView, OutputView outputView) {
+    public EventPlanner(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
 
     public void preview() {
-        Order order = inputView.readOrder();
+        final Order order = inputView.readOrder();
 
-        OrderRecord orderRecord = order.discount();
+        final OrderRecord orderRecord = order.discount();
 
         outputView.printOrderRecord(orderRecord);
     }

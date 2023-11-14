@@ -18,7 +18,7 @@ public class MenusValidator {
         validateValueEmpty(input);
 
         try {
-            List<String> orderMenus = delimiterStringToList(DELIMITER, input);
+            final List<String> orderMenus = delimiterStringToList(DELIMITER, input);
             orderMenus.forEach(MenusValidator::validateOrderMenuMatchedMenuOrderRegex);
         } catch (IllegalArgumentException exception) {
             throw new IllegalMenuException();

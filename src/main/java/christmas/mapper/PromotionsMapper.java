@@ -8,14 +8,14 @@ import java.util.List;
 public class PromotionsMapper {
     public static List<PromotionDto> mapToPromotions(final PromotionProcessor promotionProcessor) {
 
-        List<Promotion> promotions = promotionProcessor.getPromotions();
+        final List<Promotion> promotions = promotionProcessor.getPromotions();
 
         return promotions.stream()
                 .map(promotion -> toPromotionDto(promotionProcessor, promotion))
                 .toList();
     }
 
-    private static PromotionDto toPromotionDto(final PromotionProcessor promotionProcessor, Promotion promotion) {
+    private static PromotionDto toPromotionDto(final PromotionProcessor promotionProcessor, final Promotion promotion) {
         return new PromotionDto(promotion.getName(), promotionProcessor.getDiscountAmount(promotion));
     }
 }

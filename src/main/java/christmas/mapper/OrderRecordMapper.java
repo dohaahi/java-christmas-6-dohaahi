@@ -18,7 +18,7 @@ public class OrderRecordMapper {
     private final MenuItems menuItems;
     private final PromotionProcessor promotionProcessor;
 
-    public OrderRecordMapper(Date date, MenuItems menuItems, PromotionProcessor promotionProcessor) {
+    public OrderRecordMapper(final Date date, final MenuItems menuItems, final PromotionProcessor promotionProcessor) {
         this.date = date;
         this.menuItems = menuItems;
         this.promotionProcessor = promotionProcessor;
