@@ -1,10 +1,10 @@
 package christmas.domain.order;
 
-import christmas.controller.OrderRecordMapper;
 import christmas.domain.date.Date;
 import christmas.domain.dto.OrderRecord;
 import christmas.domain.menu.MenuItems;
 import christmas.domain.promotion.PromotionProcessor;
+import christmas.mapper.OrderRecordMapper;
 
 public class Order {
     private final Date date;

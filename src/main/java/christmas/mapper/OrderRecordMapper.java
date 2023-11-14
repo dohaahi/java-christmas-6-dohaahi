@@ -1,4 +1,4 @@
-package christmas.controller;
+package christmas.mapper;
 
 import static christmas.mapper.MapToBadge.mapToBadge;
 import static christmas.mapper.MapToDate.mapToDate;
