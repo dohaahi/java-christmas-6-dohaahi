@@ -5,9 +5,7 @@ public enum MenuCategory {
     MAIN("메인"),
     DESSERT("디저트"),
     DRINK("음료");
-    private final String categoryName;
 
     MenuCategory(final String categoryName) {
-        this.categoryName = categoryName;
     }
 }
