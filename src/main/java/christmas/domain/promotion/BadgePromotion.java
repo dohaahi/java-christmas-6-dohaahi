@@ -1,31 +1,23 @@
 package christmas.domain.promotion;
 
 public class BadgePromotion {
-    private final Badge badge;
-
-    public BadgePromotion(final PromotionRecord promotionRecord) {
-        this.badge = matchBadgeFrom(promotionRecord);
+    public Badge getBadge(final int totalDiscountAmount) {
+        return matchBadgeFrom(totalDiscountAmount);
     }
 
-    public Badge matchBadgeFrom(final PromotionRecord promotionRecord) {
-        final int totalDiscountAmount = promotionRecord.getTotalDiscountAmount();
-
-        if (totalDiscountAmount > Badge.SANTA.getMinPrice()) {
-            return Badge.STAR;
-        }
-
-        if (totalDiscountAmount > Badge.TREE.getMinPrice()) {
-            return Badge.TREE;
-        }
-
-        if (totalDiscountAmount > Badge.STAR.getMinPrice()) {
+    private Badge matchBadgeFrom(final int totalDiscountAmount) {
+        if (totalDiscountAmount >= Badge.SANTA.getMinDiscountAmount()) {
             return Badge.SANTA;
         }
 
-        return Badge.NONE;
-    }
+        if (totalDiscountAmount >= Badge.TREE.getMinDiscountAmount()) {
+            return Badge.TREE;
+        }
 
-    public Badge getBadge() {
-        return badge;
+        if (totalDiscountAmount >= Badge.STAR.getMinDiscountAmount()) {
+            return Badge.STAR;
+        }
+
+        return Badge.NONE;
     }
 }
