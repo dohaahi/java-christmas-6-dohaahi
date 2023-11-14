@@ -9,22 +9,29 @@ public class PromotionRecord {
     private final int giftPromotionDiscountAmount;
     private final int totalDiscountAmount;
 
-    public PromotionRecord(final int christmasPromotionDiscountAmount, final int periodPromotionDiscountAmount,
-                           final int specialPromotionDiscountAmount, final int giftPromotionDiscountAmount
+    public PromotionRecord(final int christmasPromotionDiscountAmount,
+                           final int periodPromotionDiscountAmount,
+                           final int specialPromotionDiscountAmount,
+                           final int giftPromotionDiscountAmount
     ) {
         this.christmasPromotionDiscountAmount = christmasPromotionDiscountAmount;
         this.periodPromotionDiscountAmount = periodPromotionDiscountAmount;
         this.specialPromotionDiscountAmount = specialPromotionDiscountAmount;
         this.giftPromotionDiscountAmount = giftPromotionDiscountAmount;
 
-        final List<Integer> discountAmounts = List.of(christmasPromotionDiscountAmount,
-                periodPromotionDiscountAmount, specialPromotionDiscountAmount, giftPromotionDiscountAmount);
+        final List<Integer> discountAmounts = List.of(
+                christmasPromotionDiscountAmount,
+                periodPromotionDiscountAmount,
+                specialPromotionDiscountAmount,
+                giftPromotionDiscountAmount);
 
         this.totalDiscountAmount = calculateDiscountAmount(discountAmounts);
     }
 
     private int calculateDiscountAmount(final List<Integer> discountAmounts) {
-        return discountAmounts.stream().mapToInt(Integer::intValue).sum();
+        return discountAmounts.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public int getChristmasPromotionDiscountAmount() {
