@@ -8,6 +8,7 @@ import java.time.DayOfWeek;
 
 public class SpecialPromotion implements Promotion {
     public static final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
+    private final String name = PromotionName.SPECIAL_PROMOTION.getName();
 
     @Override
     public int discountAmount(final OrderElement element) {
@@ -22,5 +23,9 @@ public class SpecialPromotion implements Promotion {
 
     private boolean isValidSpecialDiscountPeriod(final Date date) {
         return date.isMatch(CHRISTMAS_DATE) || date.isMatch(DayOfWeek.SUNDAY);
+    }
+
+    public String getName() {
+        return name;
     }
 }

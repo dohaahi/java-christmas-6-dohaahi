@@ -7,6 +7,7 @@ public class ChristmasPromotion implements Promotion {
     public static final int CHRISTMAS_DATE = 25;
     public static final int DISCOUNT_AMOUNT_INIT = 1_000;
     public static final int DAILY_DISCOUNT_AMOUNT = 100;
+    private final String name = PromotionName.CHRISTMAS_PROMOTION.getName();
 
     @Override
     public int discountAmount(final OrderElement element) {
@@ -17,5 +18,9 @@ public class ChristmasPromotion implements Promotion {
         }
 
         return DISCOUNT_AMOUNT_INIT + (date.minus(1) * DAILY_DISCOUNT_AMOUNT);
+    }
+
+    public String getName() {
+        return name;
     }
 }

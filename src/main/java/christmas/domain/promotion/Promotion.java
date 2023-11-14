@@ -6,4 +6,6 @@ public interface Promotion {
     public static final int NO_DISCOUNT = 0;
 
     public int discountAmount(final OrderElement element);
+
+    public String getName();
 }
