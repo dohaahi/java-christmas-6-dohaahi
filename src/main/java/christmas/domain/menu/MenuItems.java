@@ -17,12 +17,10 @@ public class MenuItems {
         this.menuItems = menuItems;
     }
 
-    public boolean isLessThan(final int price) {
-        return totalPrice() < price;
-    }
-
     public int totalPrice() {
-        return menuItems.stream().mapToInt(menuItem -> menuItem.getCount() * menuItem.getPrice()).sum();
+        return menuItems.stream()
+                .mapToInt(menuItem -> menuItem.getCount() * menuItem.getPrice())
+                .sum();
     }
 
     public List<MenuItem> getMenuItems() {
