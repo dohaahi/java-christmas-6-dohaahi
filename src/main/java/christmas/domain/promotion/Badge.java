@@ -6,18 +6,18 @@ public enum Badge {
     SANTA("산타", 20_000),
     NONE("없음", 0);
     private final String name;
-    private final int minPrice;
+    private final int minDiscountAmount;
 
-    Badge(final String name, final int minPrice) {
+    Badge(final String name, final int minDiscountAmount) {
         this.name = name;
-        this.minPrice = minPrice;
+        this.minDiscountAmount = minDiscountAmount;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getMinPrice() {
-        return minPrice;
+    public int getMinDiscountAmount() {
+        return minDiscountAmount;
     }
 }
