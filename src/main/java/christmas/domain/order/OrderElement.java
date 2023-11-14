@@ -1,7 +1,9 @@
 package christmas.domain.order;
 
 import christmas.domain.date.Date;
+import christmas.domain.menu.MenuItem;
 import christmas.domain.menu.MenuItems;
+import java.util.List;
 
 public class OrderElement {
     private final Date date;
@@ -12,8 +14,12 @@ public class OrderElement {
         this.date = date;
     }
 
-    public MenuItems getMenuItems() {
-        return menuItems;
+    public List<MenuItem> getMenuItems() {
+        return menuItems.getMenuItems();
+    }
+
+    public boolean isPriceLessThan(final int price) {
+        return menuItems.totalPrice() < price;
     }
 
     public Date getDate() {
