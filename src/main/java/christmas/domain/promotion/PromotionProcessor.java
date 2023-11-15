@@ -49,7 +49,7 @@ public class PromotionProcessor {
 
     public String getBadge(final int totalDiscountAmount) {
         return badgePromotion.getBadge(totalDiscountAmount)
-                .name();
+                .getName();
     }
 
     public List<Promotion> getPromotions() {
