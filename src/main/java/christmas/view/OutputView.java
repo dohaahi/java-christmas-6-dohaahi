@@ -80,12 +80,21 @@ public class OutputView {
             return;
         }
 
-        List<PromotionDto> promotions = orderRecord.Promotions();
+        printPromotions(orderRecord);
+    }
 
-        promotions.forEach(promotion -> {
-            System.out.printf(PROMOTION_RECORD_FORMAT + "\n", promotion.name(),
-                    decimalFormat(promotion.discountAmount()));
-        });
+    private void printPromotions(OrderRecord orderRecord) {
+        final List<PromotionDto> promotions = orderRecord.Promotions();
+
+        int lastIndex = promotions.size() - 1;
+        for (int size = 0; size < lastIndex; size++) {
+            System.out.printf(PROMOTION_RECORD_FORMAT, promotions.get(size).name(),
+                    decimalFormat(promotions.get(size).discountAmount()));
+
+            if (size < lastIndex - 1) {
+                System.out.println();
+            }
+        }
     }
 
     private void printTotalPromotionPrice(final OrderRecord orderRecord) {
